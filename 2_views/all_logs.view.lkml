@@ -341,8 +341,8 @@ view: all_logs {
     view_label: "3) Audit Log - Proto Payload"    group_label: "Authentication Info"
     group_item_label: "Principal Email"
     link: {
-      label: "User Lookup Dashboard"
-      url: "/dashboards/1782?Email={{ value | url_encode }}"
+      label: "Principal Lookup Dashboard"
+      url: "/dashboards/cloud_logging::principal_lookup?Principal+Email={{ value }}"
     }
   }
 

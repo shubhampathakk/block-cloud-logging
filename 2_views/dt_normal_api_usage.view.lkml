@@ -75,8 +75,8 @@ view: normal_api_usage {
 
   dimension: principal_email {
     link: {
-      label: "User Lookup"
-      url: "/dashboards/cloud_logging::user_lookup?Principal+Email={{ value }}"
+      label: "Principal Lookup"
+      url: "/dashboards/cloud_logging::principal_lookup?Principal+Email={{ value }}"
     }
   }
 
