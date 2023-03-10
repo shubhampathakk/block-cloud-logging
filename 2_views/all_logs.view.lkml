@@ -13,11 +13,15 @@ view: all_logs {
   parameter: date_granularity {
     description: "Use to make visualizations with dynamic date granulairty"
     type: unquoted
-    default_value: "day"
+    default_value: "hour"
     allowed_value: {
       label: "Hour"
       value: "hour"
     }
+    allowed_value: {
+      label: "Hour - 6"
+      value: "hour_6"
+      }
     allowed_value: {
       label: "Day"
       value: "day"
@@ -26,23 +30,19 @@ view: all_logs {
       label: "Week"
       value: "week"
     }
-    allowed_value: {
-      label: "Month"
-      value: "month"
-    }
   }
 
   dimension: date {
     description: "For use with the 'Date Granularity' filter"
     sql:
     {% if date_granularity._parameter_value == 'hour' %}
-      ${timestamp_hour_of_day}
+      ${timestamp_hour}
+     {% elsif date_granularity._parameter_value == 'hour_6' %}
+      ${timestamp_hour6}
     {% elsif date_granularity._parameter_value == 'day' %}
       ${timestamp_date}
     {% elsif date_granularity._parameter_value == 'week' %}
       ${timestamp_week}
-    {% elsif date_granularity._parameter_value == 'month' %}
-      ${timestamp_month}
     {% else %}
       ${timestamp_date}
     {% endif %};;
@@ -118,7 +118,14 @@ view: all_logs {
       raw,
       time,
       millisecond,
+      minute,
+      minute10,
+      minute15,
+      minute30,
       hour_of_day,
+      hour,
+      hour6,
+      hour12,
       date,
       week,
       month,
@@ -339,6 +346,12 @@ view: all_logs {
     }
   }
 
+  measure: principal_count {
+    type: count_distinct
+    view_label: "3) Audit Log - Proto Payload"    group_label: "Authentication Info"
+    sql: ${proto_payload__audit_log__authentication_info__principal_email} ;;
+  }
+
   dimension: is_system_or_service_account {
     type: yesno
     sql: ${proto_payload__audit_log__authentication_info__principal_email} like 'system:%' OR
@@ -419,7 +432,7 @@ view: all_logs {
     group_item_label: "Method Name"
   }
 
-  measure: total_methods_used {
+  measure: method_count {
     type: count_distinct
     sql: ${proto_payload__audit_log__method_name} ;;
   }
@@ -515,6 +528,12 @@ view: all_logs {
     sql: ${TABLE}.proto_payload.audit_log.request_metadata.caller_ip ;;
     view_label: "3) Audit Log - Proto Payload"    group_label: "Request Metadata"
     group_item_label: "Caller IP"
+  }
+
+  measure: ip_count {
+    type: count_distinct
+    sql: ${proto_payload__audit_log__request_metadata__caller_ip} ;;
+    view_label: "3) Audit Log - Proto Payload"    group_label: "Request Metadata"
   }
 
   dimension: caller_ipv4 {
@@ -803,6 +822,12 @@ view: all_logs {
     sql: SUBSTR(${proto_payload__audit_log__service_name_long}, 0, STRPOS(${proto_payload__audit_log__service_name_long}, ".") -1) ;;
     view_label: "3) Audit Log - Proto Payload"    group_label: "Main Fields"
     group_item_label: "Service Name"
+  }
+
+  measure: service_count {
+    type: count_distinct
+    view_label: "3) Audit Log - Proto Payload"    group_label: "Main Fields"
+    sql: ${proto_payload__audit_log__service_name_long} ;;
   }
 
   dimension: proto_payload__audit_log__status__code {
