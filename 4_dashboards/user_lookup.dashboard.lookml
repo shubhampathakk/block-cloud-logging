@@ -200,7 +200,7 @@
     model: cloud_logging
     explore: all_logs
     type: looker_column
-    fields: [all_logs.timestamp_date, all_logs.count, all_logs.total_methods_used]
+    fields: [all_logs.timestamp_date, all_logs.count, all_logs.method_count]
     fill_fields: [all_logs.timestamp_date]
     filters:
       all_logs.count: NOT NULL
@@ -242,14 +242,14 @@
     y_axes: [{label: '', orientation: left, series: [{axisId: all_logs.count, id: all_logs.count,
             name: Event Count}], showLabels: true, showValues: true, unpinAxis: false,
         tickDensity: default, tickDensityCustom: 5, type: linear}, {label: !!null '',
-        orientation: right, series: [{axisId: all_logs.total_methods_used, id: all_logs.total_methods_used,
+        orientation: right, series: [{axisId: all_logs.method_count, id: all_logs.method_count,
             name: Total Methods Used}], showLabels: true, showValues: true, unpinAxis: false,
         tickDensity: default, tickDensityCustom: 5, type: linear}]
-    size_by_field: all_logs.total_methods_used
+    size_by_field: all_logs.method_count
     x_axis_zoom: true
     y_axis_zoom: true
     series_types:
-      all_logs.total_methods_used: scatter
+      all_logs.method_count: scatter
     reference_lines: []
     hidden_pivots: {}
     show_null_points: true
@@ -311,7 +311,7 @@
     y_axes: [{label: '', orientation: left, series: [{axisId: all_logs.count, id: all_logs.count,
             name: Event Count}], showLabels: true, showValues: true, unpinAxis: false,
         tickDensity: default, tickDensityCustom: 5, type: linear}, {label: !!null '',
-        orientation: right, series: [{axisId: all_logs.total_methods_used, id: all_logs.total_methods_used,
+        orientation: right, series: [{axisId: all_logs.method_count, id: all_logs.method_count,
             name: Total Methods Used}], showLabels: true, showValues: true, unpinAxis: false,
         tickDensity: default, tickDensityCustom: 5, type: linear}]
     show_y_axis_labels: true
@@ -323,7 +323,7 @@
     y_axis_scale_mode: linear
     x_axis_reversed: false
     y_axis_reversed: false
-    size_by_field: all_logs.total_methods_used
+    size_by_field: all_logs.method_count
     plot_size_by_field: false
     x_axis_zoom: true
     y_axis_zoom: true
