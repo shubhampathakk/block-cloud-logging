@@ -12,7 +12,6 @@
     type: single_value
     fields: [all_logs.email]
     filters:
-      all_logs.email: hutz@google.com
       all_logs.timestamp_date: 1 days
     sorts: [all_logs.email]
     limit: 1
@@ -70,8 +69,7 @@
     type: looker_grid
     fields: [all_logs.proto_payload__audit_log__request_metadata__caller_ip, all_logs.min_timestamp,
       all_logs.max_timestamp, all_logs.count]
-    filters:
-      all_logs.email: hutz@google.com
+    filters: {}
     sorts: [all_logs.max_timestamp desc]
     limit: 500
     column_limit: 50
@@ -144,8 +142,7 @@
     explore: all_logs
     type: looker_pie
     fields: [all_logs.proto_payload__audit_log__service_name, all_logs.count]
-    filters:
-      all_logs.email: hutz@google.com
+    filters: {}
     sorts: [all_logs.count desc 0]
     limit: 500
     column_limit: 50
@@ -242,14 +239,17 @@
     y_axes: [{label: '', orientation: left, series: [{axisId: all_logs.count, id: all_logs.count,
             name: Event Count}], showLabels: true, showValues: true, unpinAxis: false,
         tickDensity: default, tickDensityCustom: 5, type: linear}, {label: !!null '',
-        orientation: right, series: [{axisId: all_logs.method_count, id: all_logs.method_count,
+        orientation: right, series: [{axisId: all_logs.total_methods_used, id: all_logs.total_methods_used,
             name: Total Methods Used}], showLabels: true, showValues: true, unpinAxis: false,
         tickDensity: default, tickDensityCustom: 5, type: linear}]
     size_by_field: all_logs.method_count
     x_axis_zoom: true
     y_axis_zoom: true
     series_types:
+      all_logs.total_methods_used: scatter
       all_logs.method_count: scatter
+    series_labels:
+      all_logs.method_count: Methods Used
     reference_lines: []
     hidden_pivots: {}
     show_null_points: true
@@ -311,7 +311,7 @@
     y_axes: [{label: '', orientation: left, series: [{axisId: all_logs.count, id: all_logs.count,
             name: Event Count}], showLabels: true, showValues: true, unpinAxis: false,
         tickDensity: default, tickDensityCustom: 5, type: linear}, {label: !!null '',
-        orientation: right, series: [{axisId: all_logs.method_count, id: all_logs.method_count,
+        orientation: right, series: [{axisId: all_logs.total_methods_used, id: all_logs.total_methods_used,
             name: Total Methods Used}], showLabels: true, showValues: true, unpinAxis: false,
         tickDensity: default, tickDensityCustom: 5, type: linear}]
     show_y_axis_labels: true
@@ -323,7 +323,7 @@
     y_axis_scale_mode: linear
     x_axis_reversed: false
     y_axis_reversed: false
-    size_by_field: all_logs.method_count
+    size_by_field: all_logs.total_methods_used
     plot_size_by_field: false
     x_axis_zoom: true
     y_axis_zoom: true
