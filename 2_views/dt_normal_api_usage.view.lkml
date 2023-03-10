@@ -1,4 +1,4 @@
-view: normal_api_usage {
+view: unusual_api_usage {
   derived_table: {
     sql:
             SELECT
@@ -66,7 +66,7 @@ view: normal_api_usage {
 
   filter: method_name {
     label: "Method / API Name"
-    description: "Use to look for abnormal behavior on specific APIs"
+    description: "Use to look for unusual behavior on specific APIs"
     type: string
     suggest_explore: all_logs
     suggest_dimension: all_logs.proto_payload__audit_log__method_name
@@ -143,7 +143,8 @@ view: normal_api_usage {
     value_format_name: decimal_2
   }
 
-  measure: abnormal_threshold {
+  measure: unusual_threshold {
+    alias: [abnormal_threshold]
     type: max
     sql: ${threshold} ;;
     value_format_name: decimal_2
