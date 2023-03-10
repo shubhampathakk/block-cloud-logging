@@ -524,6 +524,7 @@ view: all_logs {
   }
 
   dimension: proto_payload__audit_log__request_metadata__caller_ip {
+    label: "Caller IP"
     type: string
     sql: ${TABLE}.proto_payload.audit_log.request_metadata.caller_ip ;;
     view_label: "3) Audit Log - Proto Payload"    group_label: "Request Metadata"
@@ -1355,56 +1356,7 @@ view: all_logs {
     html: {{rendered_value}} GB ;;
   }
 
-#################################################
-#### Demo Only - USERS table ####################
-#################################################
 
-  dimension: department {
-    view_label: "Users"
-    type: string
-    sql: 'Finance' ;;
-  }
-
-  dimension: email {
-    view_label: "Users"
-    label: "Principal Email"
-    type: string
-    sql: ${proto_payload__audit_log__authentication_info__principal_email} ;;
-  }
-
-  dimension: employment_status {
-    view_label: "Users"
-    type: string
-    sql: 'Active' ;;
-  }
-
-  dimension: image {
-    view_label: "Users"
-    type: string
-    sql: CONCAT('https://moma-teams-photos.corp.google.com/photos/',${email}) ;;
-    html: <img src="{{value}}"/>;;
-  }
-
-  # Dates and timestamps can be represented in Looker using a dimension group of type: time.
-  # Looker converts dates and timestamps to the specified timeframes within the dimension group.
-
-  dimension: start_date {
-    view_label: "Users"
-    type: date_time
-    sql: '2019-02-10' ;;
-  }
-
-  dimension: tenure {
-    view_label: "Users"
-    type: string
-    sql: '3 years, 5 months' ;;
-  }
-
-  measure: user_count {
-    view_label: "Users"
-    type: count_distinct
-    sql: ${proto_payload__audit_log__authentication_info__principal_email} ;;
-  }
 
 
 

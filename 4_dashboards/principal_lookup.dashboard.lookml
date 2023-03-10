@@ -1,67 +1,10 @@
-- dashboard: user_lookup
-  title: User Lookup
+- dashboard: principal_lookup
+  title: Principal Lookup
   layout: newspaper
   preferred_viewer: dashboards-next
   description: ''
   preferred_slug: 9X8S88dtaUzQpRwRX9SbxB
   elements:
-  - title: User
-    name: User
-    model: cloud_logging
-    explore: all_logs
-    type: single_value
-    fields: [all_logs.email]
-    filters:
-      all_logs.timestamp_date: 1 days
-    sorts: [all_logs.email]
-    limit: 1
-    column_limit: 50
-    custom_color_enabled: true
-    show_single_value_title: true
-    show_comparison: false
-    comparison_type: value
-    comparison_reverse_colors: false
-    show_comparison_label: true
-    enable_conditional_formatting: false
-    conditional_formatting_include_totals: false
-    conditional_formatting_include_nulls: false
-    x_axis_gridlines: false
-    y_axis_gridlines: true
-    show_view_names: false
-    show_y_axis_labels: true
-    show_y_axis_ticks: true
-    y_axis_tick_density: default
-    y_axis_tick_density_custom: 5
-    show_x_axis_label: true
-    show_x_axis_ticks: true
-    y_axis_scale_mode: linear
-    x_axis_reversed: false
-    y_axis_reversed: false
-    plot_size_by_field: false
-    trellis: ''
-    stacking: ''
-    limit_displayed_rows: false
-    legend_position: center
-    point_style: none
-    show_value_labels: false
-    label_density: 25
-    x_axis_scale: auto
-    y_axis_combined: true
-    ordering: none
-    show_null_labels: false
-    show_totals_labels: false
-    show_silhouette: false
-    totals_color: "#808080"
-    defaults_version: 1
-    series_types: {}
-    hidden_fields: []
-    y_axes: []
-    listen:
-      Principal Email: all_logs.proto_payload__audit_log__authentication_info__principal_email
-    row: 0
-    col: 0
-    width: 24
-    height: 2
   - title: IPs Used - Last 30 Days
     name: IPs Used - Last 30 Days
     model: cloud_logging
@@ -365,6 +308,61 @@
     body_text: '[{"type":"h2","children":[{"text":"API Usage"}],"align":"center"}]'
     rich_content_json: '{"format":"slate"}'
     row: 10
+    col: 0
+    width: 24
+    height: 2
+  - title: email
+    name: email
+    model: cloud_logging
+    explore: all_logs
+    type: single_value
+    fields: [all_logs.proto_payload__audit_log__authentication_info__principal_email]
+    filters: {}
+    sorts: [all_logs.proto_payload__audit_log__authentication_info__principal_email]
+    limit: 500
+    column_limit: 50
+    custom_color_enabled: true
+    show_single_value_title: false
+    show_comparison: false
+    comparison_type: value
+    comparison_reverse_colors: false
+    show_comparison_label: true
+    enable_conditional_formatting: false
+    conditional_formatting_include_totals: false
+    conditional_formatting_include_nulls: false
+    x_axis_gridlines: false
+    y_axis_gridlines: true
+    show_view_names: false
+    show_y_axis_labels: true
+    show_y_axis_ticks: true
+    y_axis_tick_density: default
+    y_axis_tick_density_custom: 5
+    show_x_axis_label: true
+    show_x_axis_ticks: true
+    y_axis_scale_mode: linear
+    x_axis_reversed: false
+    y_axis_reversed: false
+    plot_size_by_field: false
+    trellis: ''
+    stacking: ''
+    limit_displayed_rows: false
+    legend_position: center
+    point_style: none
+    show_value_labels: false
+    label_density: 25
+    x_axis_scale: auto
+    y_axis_combined: true
+    ordering: none
+    show_null_labels: false
+    show_totals_labels: false
+    show_silhouette: false
+    totals_color: "#808080"
+    defaults_version: 1
+    series_types: {}
+    listen:
+      Principal Email: all_logs.proto_payload__audit_log__authentication_info__principal_email
+      Date: all_logs.timestamp_date
+    row: 0
     col: 0
     width: 24
     height: 2
