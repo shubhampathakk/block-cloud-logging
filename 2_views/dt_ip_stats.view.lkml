@@ -1,38 +1,31 @@
-view: user_ip_stats {
-  # this is used to determine if a user is using a new IP address compared to their historical use of IPs
+view: ip_stats {
+  # this is used to determine if an IP address is being used for the first time
   # it is meant to be joined back to the All Logs table for exploratory analysis
   # CSA 5.31
 
     derived_table: {
       sql:
           SELECT
-              _all_logs.proto_payload.audit_log.authentication_info.principal_email  AS `principal_email`,
               _all_logs.proto_payload.audit_log.request_metadata.caller_ip  AS `caller_ip`,
               MIN(_all_logs.timestamp ) AS `first_instance`,
               MAX(_all_logs.timestamp ) AS `last_instance`,
               count(*) as count
           FROM `sd-uxr-001.looker._AllLogs`  AS _all_logs
-          -- currently only pulls last 7 days
-          WHERE ((( _all_logs.timestamp  ) >= ((TIMESTAMP_ADD(TIMESTAMP_TRUNC(CURRENT_TIMESTAMP(), DAY), INTERVAL -5 DAY))) AND ( _all_logs.timestamp  ) < ((TIMESTAMP_ADD(TIMESTAMP_ADD(TIMESTAMP_TRUNC(CURRENT_TIMESTAMP(), DAY), INTERVAL -5 DAY), INTERVAL 6 DAY))))
+          -- currently pulls last 120 days
+          WHERE ((( _all_logs.timestamp  ) >= ((TIMESTAMP_ADD(TIMESTAMP_TRUNC(CURRENT_TIMESTAMP(), DAY), INTERVAL -119 DAY)))
+          AND ( _all_logs.timestamp  ) < ((TIMESTAMP_ADD(TIMESTAMP_ADD(TIMESTAMP_TRUNC(CURRENT_TIMESTAMP(), DAY), INTERVAL -119 DAY), INTERVAL 120 DAY))))
              ) AND (_all_logs.proto_payload.audit_log.authentication_info.principal_email ) IS NOT NULL AND (_all_logs.proto_payload.audit_log.request_metadata.caller_ip ) IS NOT NULL
           GROUP BY
-              1,
-              2
+              1
           ;;
     }
-    dimension: principal_email {
 
-      description: ""
-    }
     dimension: caller_ip {
+      primary_key: yes
       description: ""
     }
 
-    dimension: primary_key {
-      hidden: yes
-      primary_key: yes
-      sql: CONCAT(${principal_email},${caller_ip}) ;;
-    }
+
     dimension_group: first_instance {
       description: "First time user used the IP address"
       type: time
@@ -82,7 +75,7 @@ view: user_ip_stats {
       sql: ${new_since_hours} <= {% parameter hours_considered_new %} ;;
     }
 
-    measure: user_events_from_ip {
+    measure: events_from_ip {
       type: sum
       sql: ${TABLE}.count ;;
     }

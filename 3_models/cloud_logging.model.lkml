@@ -56,12 +56,11 @@ explore: all_logs {
     and ${ip_to_geo_mapping.end_ipv4_int64};;
     }
 
-  join: user_ip_stats {
-    view_label: "User IP Stats"
+  join: ip_stats {
+    view_label: "IP Stats"
     type: left_outer
     relationship: many_to_one
-    sql_on: ${all_logs.proto_payload__audit_log__authentication_info__principal_email} = ${user_ip_stats.principal_email}
-    AND ${all_logs.proto_payload__audit_log__request_metadata__caller_ip} = ${user_ip_stats.caller_ip}   ;;
+    sql_on: ${all_logs.proto_payload__audit_log__request_metadata__caller_ip} = ${ip_stats.caller_ip}   ;;
   }
 
   join: all_logs__proto_payload__request_log__line {

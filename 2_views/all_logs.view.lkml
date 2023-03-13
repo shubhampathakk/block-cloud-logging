@@ -339,7 +339,7 @@ view: all_logs {
     type: string
     sql: ${TABLE}.proto_payload.audit_log.authentication_info.principal_email ;;
     view_label: "3) Audit Log - Proto Payload"    group_label: "Authentication Info"
-    group_item_label: "Principal Email"
+    label: "Principal Email"
     link: {
       label: "Principal Lookup Dashboard"
       url: "/dashboards/cloud_logging::principal_lookup?Principal+Email={{ value }}"
@@ -429,12 +429,13 @@ view: all_logs {
     type: string
     sql: ${TABLE}.proto_payload.audit_log.method_name ;;
     view_label: "3) Audit Log - Proto Payload"    group_label: "Main Fields"
-    group_item_label: "Method Name"
+    label: "Method Name"
   }
 
   measure: method_count {
     type: count_distinct
     sql: ${proto_payload__audit_log__method_name} ;;
+    drill_fields: [timestamp_time, log_type, proto_payload__audit_log__authentication_info__principal_email, proto_payload__audit_log__service_name, proto_payload__audit_log__resource_name, proto_payload__audit_log__method_name]
   }
 
   dimension: is_login {
@@ -760,7 +761,14 @@ view: all_logs {
     type: string
     sql: ${TABLE}.proto_payload.audit_log.resource_name ;;
     view_label: "3) Audit Log - Proto Payload"    group_label: "Main Fields"
-    group_item_label: "Resource Name"
+    label: "Resource Name"
+  }
+
+  measure: resource_count {
+    type: count_distinct
+    sql: ${proto_payload__audit_log__resource_name} ;;
+    view_label: "3) Audit Log - Proto Payload"    group_label: "Main Fields"
+    drill_fields: [timestamp_time, log_type, proto_payload__audit_log__authentication_info__principal_email, proto_payload__audit_log__service_name, proto_payload__audit_log__resource_name, proto_payload__audit_log__method_name]
   }
 
   dimension: proto_payload__audit_log__resource_original_state {
@@ -815,14 +823,14 @@ view: all_logs {
     type: string
     sql: ${TABLE}.proto_payload.audit_log.service_name ;;
     view_label: "3) Audit Log - Proto Payload"    group_label: "Main Fields"
-    group_item_label: "Service Name (Long)"
+    label: "Service Name (Long)"
   }
 
   dimension: proto_payload__audit_log__service_name {
     type: string
     sql: SUBSTR(${proto_payload__audit_log__service_name_long}, 0, STRPOS(${proto_payload__audit_log__service_name_long}, ".") -1) ;;
     view_label: "3) Audit Log - Proto Payload"    group_label: "Main Fields"
-    group_item_label: "Service Name"
+    label: "Service Name"
   }
 
   measure: service_count {
