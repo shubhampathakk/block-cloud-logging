@@ -27,4 +27,4 @@ The block is not yet available on the [Looker Marketplace](https://marketplace.l
 
 ## Customizing the Block
 
-#### Adding IP to Geography mapping data
+#### Adding IP to Geography mapping data (details coming soon)
