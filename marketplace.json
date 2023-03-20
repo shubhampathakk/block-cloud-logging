@@ -2,7 +2,7 @@
   "label": "Cloud Logging - Log Analytics",
   "category_label": "Models",
   "branding": {
-    "image_uri": "https://marketplace-api.looker.com/block-icons/cortex_icon.png",
+    "image_uri": "https://marketplace-api.looker.com/block-icons/logging-icon.png",
     "tagline": "Explore, report, and alert on your logs stored in Google Cloud Logging’s Log Analytics including application logs, Cloud Audit logs and network logs."
   },
 
