@@ -2,8 +2,8 @@
 connection: "@{CONNECTION_NAME}"
 
 # include all the views
-include: "/2_views/**/*.view"
-include: "/4_dashboards/*.dashboard.lookml"
+include: "/views/**/*.view"
+include: "/dashboards/*.dashboard.lookml"
 
 # Datagroups define a caching policy for an Explore. To learn more,
 # use the Quick Help panel on the right to see documentation.

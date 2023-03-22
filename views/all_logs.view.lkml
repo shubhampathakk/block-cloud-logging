@@ -365,11 +365,12 @@ view: all_logs {
     view_label: "3) Audit Log - Proto Payload"    group_label: "Authentication Info"
   }
 
-  dimension: is_email_in_company_domain {
-    type: yesno
-    sql: ${proto_payload__audit_log__authentication_info__principal_email} like '%@{COMPANY_DOMAIN}' ;;
-    view_label: "3) Audit Log - Proto Payload"    group_label: "Authentication Info"
-  }
+  # dimension: is_email_in_company_domain {
+  #   # uncomment and replace @google.com with your company's email domain
+  #   type: yesno
+  #   sql: ${proto_payload__audit_log__authentication_info__principal_email} like '@google.com' ;;
+  #   view_label: "3) Audit Log - Proto Payload"    group_label: "Authentication Info"
+  # }
 
   dimension: proto_payload__audit_log__authentication_info__principal_subject {
     type: string

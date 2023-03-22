@@ -19,12 +19,6 @@
     },
      "LOG_TABLE_NAME": {
       "label": "Log Table Name"
-    },
-    "COMPANY_DOMAIN": {
-      "label": "Company Domain"
-    },
-    "LOOKER_URL": {
-      "label": "Looker URL"
     }
   },
       "models": [
@@ -33,5 +27,5 @@
             "connection_constant": "CONNECTION_NAME"
         }
     ]
-  
+
 }

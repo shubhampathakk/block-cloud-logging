@@ -26,15 +26,3 @@ constant: LOG_TABLE_NAME {
   value: "_AllLogs"
   export: override_optional
 }
-
-constant: COMPANY_DOMAIN {
-  value: "@google.com"
-  export: override_optional
-}
-
-constant: LOOKER_URL  {
-  # full url of Looker instance - i.e. "https://acme.looker.com""
-  value: "https://googlecloud.looker.com"
-  export: override_required
-
-}
