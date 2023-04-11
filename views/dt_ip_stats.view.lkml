@@ -10,7 +10,7 @@ view: ip_stats {
               MIN(_all_logs.timestamp ) AS `first_instance`,
               MAX(_all_logs.timestamp ) AS `last_instance`,
               count(*) as count
-          FROM `sd-uxr-001.looker._AllLogs`  AS _all_logs
+          FROM `@{PROJECT_NAME}.@{SCHEMA_NAME}.@{LOG_TABLE_NAME}`  AS _all_logs
           -- currently pulls last 120 days
           WHERE ((( _all_logs.timestamp  ) >= ((TIMESTAMP_ADD(TIMESTAMP_TRUNC(CURRENT_TIMESTAMP(), DAY), INTERVAL -119 DAY)))
           AND ( _all_logs.timestamp  ) < ((TIMESTAMP_ADD(TIMESTAMP_ADD(TIMESTAMP_TRUNC(CURRENT_TIMESTAMP(), DAY), INTERVAL -119 DAY), INTERVAL 120 DAY))))
