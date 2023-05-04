@@ -23,7 +23,7 @@ view: unusual_api_usage {
               EXTRACT(DATE FROM timestamp) AS day,
               ARRAY_AGG(DISTINCT proto_payload.audit_log.method_name IGNORE NULLS) AS actions,
               COUNT(*) AS counter
-            FROM `@{PROJECT_NAME}.@{SCHEMA_NAME}.@{LOG_TABLE_NAME}`
+            FROM `@{PROJECT_ID}.@{DATASET_ID}.@{LOG_TABLE_NAME}`
             WHERE
               {% condition historical_date %} timestamp {% endcondition %}
               AND proto_payload.audit_log.authentication_info.principal_email IS NOT NULL

@@ -11,11 +11,11 @@
       "label": "Connection Name",
       "value_constraint": "connection"
     },
-    "PROJECT_NAME": {
-      "label": "Project Name"
+    "PROJECT_ID": {
+      "label": "BigQuery Project ID"
     },
-    "SCHEMA_NAME": {
-      "label": "Schema Name"
+    "DATASET_ID": {
+      "label": "BigQuery Dataset ID"
     },
      "LOG_TABLE_NAME": {
       "label": "Log Table Name"

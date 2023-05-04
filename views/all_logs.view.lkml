@@ -1,6 +1,6 @@
 view: all_logs {
-  # SCHEMA_NAME and LOG_TABLE_NAME are constants set in the manifest file
-  sql_table_name: `@{PROJECT_NAME}.@{SCHEMA_NAME}.@{LOG_TABLE_NAME}` ;;
+  # DATASET_ID and LOG_TABLE_NAME are constants set in the manifest file
+  sql_table_name: `@{PROJECT_ID}.@{DATASET_ID}.@{LOG_TABLE_NAME}` ;;
 
   # parameters
 

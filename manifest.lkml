@@ -10,13 +10,13 @@ constant: CONNECTION_NAME {
 }
 
 ## Used in all_logs.view sql_table_name
-constant: PROJECT_NAME {
+constant: PROJECT_ID {
   value: "sd-uxr-001"
   export: override_required
 }
 
 ## Used in all_logs.view sql_table_name
-constant: SCHEMA_NAME {
+constant: DATASET_ID {
   value: "looker"
   export: override_required
 }

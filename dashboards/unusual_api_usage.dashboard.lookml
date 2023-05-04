@@ -263,8 +263,9 @@
     allow_multiple_values: true
     required: false
     ui_config:
-      type: dropdown_menu
-      display: inline
+      type: advanced
+      display: popover
+      options: []
     model: cloud_logging
     explore: unusual_api_usage
     listens_to_filters: []
