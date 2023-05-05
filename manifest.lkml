@@ -17,7 +17,7 @@ constant: PROJECT_ID {
 
 ## Used in all_logs.view sql_table_name
 constant: DATASET_ID {
-  value: "looker"
+  value: "demo_logs"
   export: override_required
 }
 
