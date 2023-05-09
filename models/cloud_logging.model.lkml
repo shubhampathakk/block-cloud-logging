@@ -20,6 +20,7 @@ persist_with: cloud_logging_default_datagroup
 #########################################################################################################################################
 
 explore: all_logs {
+  label: "Audit Logs"
 
   always_filter: {
     # to reduce inadverent expensive queries, default all explore queries to last 1 day (today)
@@ -128,9 +129,12 @@ explore: all_logs {
   }
 }
 
-explore: impossible_traveler {}
+explore: impossible_traveler {
+  hidden: yes
+}
 
 explore: unusual_api_usage {
+  hidden: yes
   label: "Abnormal API Usage"
   view_label: "0) Normal API Usage"
   description: "Compare API usage against historical norms to find abnormal usage patterns"
