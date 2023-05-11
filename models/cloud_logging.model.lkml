@@ -160,4 +160,12 @@ explore: unusual_api_usage {
 
 explore: network_logs {
   #fields: [network_logs*,]
+
+
+  always_filter: {
+      # always filter on VPC flow logs
+      filters: [network_logs.log_id: "compute.googleapis.com/vpc_flows"]
+      # to reduce inadverent expensive queries, default all explore queries to last 1 day (today)
+      filters: [network_logs.timestamp_date: "last 1 days"]
+    }
 }
