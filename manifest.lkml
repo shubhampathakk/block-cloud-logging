@@ -26,3 +26,13 @@ constant: LOG_TABLE_NAME {
   value: "_AllLogs"
   export: override_optional
 }
+
+constant: NETWORK_REPORTER_SOURCE {
+  value: "SRC"
+  export: none
+}
+
+constant: NETWORK_REPORTER_DESTINATION {
+  value: "DEST"
+  export: none
+}
