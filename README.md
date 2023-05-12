@@ -1,7 +1,3 @@
-# [IMPORTANT NOTE: NEWER AUDIT LOG BLOCK NOW AVAILABLE]
-#### Apr 2023 - This block leverages the older "log sink" to BigQuery methodology. There is a new and improved "Log Analytics" method that would be recommended for any new projects going forward. [Compare the 2 methods here](https://cloud.google.com/blog/products/data-analytics/moving-to-log-analytics-for-bigquery-export-users).
-#### Please refer to the new [Cloud Logging - Log Analytics](https://marketplace.looker.com/marketplace/detail/cloud-logging) block for the updated lookml and dashboards.
-
 # Google Cloud Logging - Log Analytics Block
 Google Cloud Logging’s [Log Analytics](https://cloud.google.com/blog/products/devops-sre/introducing-cloud-loggings-log-analytics-powered-by-big-query) feature centralizes all of your log data (application, audit and network) into a single view within BigQuery. This block allows you to instantly aggregate, visualize, and alert on all of your log data using pre-built dashboards and LookML data models. You can also extend and customize the block to include other datasets and define new logic that is unique to your business.
 
