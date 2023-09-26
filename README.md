@@ -20,7 +20,7 @@ Google Cloud Logging’s [Log Analytics](https://cloud.google.com/blog/products/
 ### Prerequisites
 To make your log data visible to BigQuery, upgrade your bucket to use [Log Analytics](https://cloud.google.com/logging/docs/buckets#upgrade-bucket) and then create a [linked dataset](https://cloud.google.com/logging/docs/buckets#link-bq-dataset).
 
-There is also an older method of moving logs into BigQuery by creating sinks. This method creates a different data structure, so you should refer to this [Looker block](https://github.com/looker/block-gcp-audit-logs-config) if you are using this method.
+There is also an older method of moving logs into BigQuery by creating sinks. This method creates a different data structure, so you should refer to this [Looker block](https://github.com/looker-open-source/block-gcp-audit-logs) if you are using this method.
 
 ### Installing the Block
 The block is not yet available on the [Looker Marketplace](https://marketplace.looker.com/), but will be soon. In the meantime, you can clone this git repo when [creating a new Looker project](https://cloud.google.com/looker/docs/create-projects#cloning_a_public_git_repository).
