@@ -8,8 +8,8 @@ derived_table: {
               ,NET.IPV4_TO_INT64(NET.SAFE_IP_FROM_STRING(substr(network, 1, strpos(network, '/') - 1))) + POW(2, 32 - cast(substr(network, strpos(network, '/') + 1) as INT64)) - 2 end_ipv4_int64
               , TRUNC(NET.IPV4_TO_INT64(NET.IP_FROM_STRING(substr(network, 1, strpos(network, '/') - 1)))/(256*256)) AS class_b
               , *
-              FROM `sd-uxr-001.looker.ipv4_city_blocks`
-              JOIN `sd-uxr-001.looker.ipv4_city_locations`
+              FROM `pso-gdc-japac-wedevelop-df.security_logs.ipv4_city_blocks`
+              JOIN `pso-gdc-japac-wedevelop-df.security_logs.ipv4_city_locations`
               USING(geoname_id)
               order by 1 asc
   ;;

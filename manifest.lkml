@@ -5,19 +5,19 @@ project_name: "block_gcp_cloud_logging"
 
 ## Used in cloud_logging.model connection param
 constant: CONNECTION_NAME {
-  value: "cloud_logging"
+  value: "sample_bigquery_connection"
   export: override_required
 }
 
 ## Used in all_logs.view sql_table_name
 constant: PROJECT_ID {
-  value: "sd-uxr-001"
+  value: "pso-gdc-japac-wedevelop-df"
   export: override_required
 }
 
 ## Used in all_logs.view sql_table_name
 constant: DATASET_ID {
-  value: "demo_logs"
+  value: "log_looker"
   export: override_required
 }
 

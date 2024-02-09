@@ -169,3 +169,10 @@ explore: network_logs {
       filters: [network_logs.timestamp_date: "last 1 days"]
     }
 }
+
+explore: ipv4_city_locations {
+  join: ipv4_city_blocks {
+    relationship: one_to_many
+    sql_on:  ${ipv4_city_locations.geoname_id} = ${ipv4_city_blocks.geoname_id} ;;
+  }
+}
