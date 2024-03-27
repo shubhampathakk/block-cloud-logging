@@ -1,6 +1,4 @@
-explore: vpn_unknown {
-  from: vpn_unknown_poc
-}
+
 view: vpn_unknown_poc {
   sql_table_name: `pso-gdc-japac-wedevelop-df.dataflow_demo.vpn_unknown_poc` ;;
 

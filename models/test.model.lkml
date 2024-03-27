@@ -18,3 +18,7 @@ include: "/dashboards/*.view.lkml"                # include all views in the vie
 #     sql_on: ${users.id} = ${orders.user_id} ;;
 #   }
 # }
+
+explore: vpn_unknown_poc {
+  from: vpn_unknown_poc
+}
