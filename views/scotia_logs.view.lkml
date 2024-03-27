@@ -28,6 +28,11 @@ view: scotia_logs {
   dimension: event_category {
     type: string
     sql: ${TABLE}.Event_Category ;;
+    drill_fields: [enrollment_user]
+    link: {
+      label: "Adding details fields for this category"
+      url: "https://9b5682f8-94ce-49e3-9836-fb0635a6e8a9.looker.app/dashboards/10"
+    }
   }
   dimension: event_data {
     type: string

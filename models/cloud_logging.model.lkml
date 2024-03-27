@@ -176,3 +176,12 @@ explore: ipv4_city_locations {
     sql_on:  ${ipv4_city_locations.geoname_id} = ${ipv4_city_blocks.geoname_id} ;;
   }
 }
+
+explore: vpn_mexico_poc{
+  label: "VPN test Dashboard"
+  join: vpn_uruguay_poc {
+    type: full_outer
+    relationship: many_to_many
+    sql_on: ${vpn_mexico_poc.dap_user} = ${vpn_uruguay_poc.username} ;;
+  }
+}
