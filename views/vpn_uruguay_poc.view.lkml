@@ -3,7 +3,7 @@ explore: vpn_uruguay {
 }
 
 view: vpn_uruguay_poc {
-  sql_table_name: `pso-gdc-japac-wedevelop-df.dataflow_demo.vpn_uruguay_poc` ;;
+  sql_table_name: @{PROJECT_ID}.@{DATASET_ID}.@{table_uruguay} ;;
 
   dimension_group: _partitiondate {
     type: time

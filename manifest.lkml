@@ -15,24 +15,18 @@ constant: PROJECT_ID {
   export: override_required
 }
 
-## Used in all_logs.view sql_table_name
+## Used in vpn_mexico_poc.view and vpn_uruguay_poc.view sql_dataset_name
 constant: DATASET_ID {
-  value: "log_looker"
-  export: override_required
-}
-
-## Used in all_logs.view sql_table_name
-constant: LOG_TABLE_NAME {
-  value: "_AllLogs"
+  value: "dataflow_demo"
   export: override_optional
 }
 
-constant: NETWORK_REPORTER_SOURCE {
-  value: "SRC"
-  export: none
+## Used in vpn_mexico_poc.view and vpn_uruguay_poc.view sql_table_name
+constant: table_mexico {
+  value: "vpn_mexico_poc"
+  export: override_required
 }
-
-constant: NETWORK_REPORTER_DESTINATION {
-  value: "DEST"
-  export: none
+constant: table_uruguay {
+  value: "vpn_uruguay_poc"
+  export: override_required
 }

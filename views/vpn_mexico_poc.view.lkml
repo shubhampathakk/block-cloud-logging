@@ -3,7 +3,7 @@ explore: vpn_mexico {
 }
 
 view: vpn_mexico_poc {
-  sql_table_name: `pso-gdc-japac-wedevelop-df.dataflow_demo.vpn_mexico_poc` ;;
+  sql_table_name: @{PROJECT_ID}.@{DATASET_ID}.@{table_mexico} ;;
 
   dimension_group: _partitiondate {
     type: time

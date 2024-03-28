@@ -1,3 +1,4 @@
+---
 - dashboard: vpn_dashboard
   title: VPN Dashboard
   layout: newspaper
@@ -7,7 +8,7 @@
   elements:
   - title: Mexico APPs
     name: Mexico APPs
-    model: cloud_logging
+    model: vpn_logging
     explore: vpn_mexico
     type: single_value
     fields: [vpn_mexico.distinct_apps]
@@ -30,7 +31,7 @@
     height: 3
   - title: Uruguay APPs
     name: Uruguay APPs
-    model: cloud_logging
+    model: vpn_logging
     explore: vpn_uruguay
     type: single_value
     fields: [vpn_uruguay.distinct_apps]
@@ -54,7 +55,7 @@
     height: 3
   - title: Count of session failure for a Group
     name: Count of session failure for a Group
-    model: cloud_logging
+    model: vpn_logging
     explore: vpn_uruguay
     type: looker_grid
     fields: [vpn_uruguay.group, vpn_uruguay.session, vpn_uruguay.reason, vpn_uruguay.count]
@@ -136,7 +137,7 @@
     height: 9
   - title: Duration vs Reason for Session failure
     name: Duration vs Reason for Session failure
-    model: cloud_logging
+    model: vpn_logging
     explore: vpn_uruguay
     type: looker_area
     fields: [vpn_uruguay.duration, vpn_uruguay.reason, vpn_uruguay.count]
@@ -209,7 +210,7 @@
     height: 10
   - title: Session Error
     name: Session Error
-    model: cloud_logging
+    model: vpn_logging
     explore: vpn_uruguay
     type: looker_pie
     fields: [vpn_uruguay.reason, vpn_uruguay.count]
@@ -253,7 +254,7 @@
     height: 6
   - title: Avg duration for per session failure
     name: Avg duration for per session failure
-    model: cloud_logging
+    model: vpn_logging
     explore: vpn_uruguay
     type: looker_grid
     fields: [vpn_uruguay.reason, vpn_uruguay.avg_duration, vpn_uruguay.count]
@@ -351,7 +352,7 @@
     height: 7
   - title: Percentage of Bytes Xmt per session
     name: Percentage of Bytes Xmt per session
-    model: cloud_logging
+    model: vpn_logging
     explore: vpn_uruguay
     type: looker_pie
     fields: [vpn_uruguay.session_type, vpn_uruguay.grouped_bytes_xmt]
@@ -401,7 +402,7 @@
     height: 6
   - title: Percentage of Bytes Rcv per session
     name: Percentage of Bytes Rcv per session
-    model: cloud_logging
+    model: vpn_logging
     explore: vpn_uruguay
     type: looker_pie
     fields: [vpn_uruguay.session_type, vpn_uruguay.grouped_bytes_rcv]
@@ -452,7 +453,7 @@
     height: 6
   - title: Reason for top 10 IP's session failure
     name: Reason for top 10 IP's session failure
-    model: cloud_logging
+    model: vpn_logging
     explore: vpn_uruguay
     type: looker_column
     fields: [vpn_uruguay.ip, vpn_uruguay.reason, vpn_uruguay.count]
@@ -546,7 +547,7 @@
     height: 7
   - title: IP's
     name: IP's
-    model: cloud_logging
+    model: vpn_logging
     explore: vpn_uruguay
     type: looker_grid
     fields: [vpn_uruguay.ip]
@@ -611,7 +612,7 @@
     height: 6
   - title: Data
     name: Data
-    model: cloud_logging
+    model: vpn_logging
     explore: vpn_uruguay
     type: looker_grid
     fields: [vpn_uruguay.ip, vpn_uruguay.event_source, vpn_uruguay.app, vpn_uruguay.bytes_rcv,
@@ -644,6 +645,7 @@
       show_hide: show
       first_last: first
       num_rows: '5'
+    header_background_color: "#9bc2e8"
     x_axis_gridlines: false
     y_axis_gridlines: true
     show_y_axis_labels: true
@@ -676,13 +678,14 @@
       IP: vpn_uruguay.ip
       Reason: vpn_uruguay.reason
       App: vpn_uruguay.app
+      Username: vpn_uruguay.username
     row: 38
     col: 0
     width: 21
     height: 7
   - title: Reason of failure wrt Session Type
     name: Reason of failure wrt Session Type
-    model: cloud_logging
+    model: vpn_logging
     explore: vpn_uruguay
     type: looker_donut_multiples
     fields: [vpn_uruguay.reason, vpn_uruguay.count, vpn_uruguay.session_type]
@@ -766,7 +769,7 @@
       type: relative_timeframes
       display: inline
       options: []
-    model: cloud_logging
+    model: vpn_logging
     explore: vpn_mexico_poc
     listens_to_filters: []
     field: vpn_uruguay_poc._partitiondate_date
@@ -779,7 +782,7 @@
     ui_config:
       type: tag_list
       display: popover
-    model: cloud_logging
+    model: vpn_logging
     explore: vpn_mexico_poc
     listens_to_filters: []
     field: vpn_uruguay_poc.ip
@@ -792,7 +795,7 @@
     ui_config:
       type: checkboxes
       display: popover
-    model: cloud_logging
+    model: vpn_logging
     explore: vpn_mexico_poc
     listens_to_filters: []
     field: vpn_uruguay_poc.host
@@ -805,7 +808,7 @@
     ui_config:
       type: checkboxes
       display: popover
-    model: cloud_logging
+    model: vpn_logging
     explore: vpn_mexico_poc
     listens_to_filters: []
     field: vpn_uruguay_poc.reason
@@ -818,7 +821,20 @@
     ui_config:
       type: checkboxes
       display: popover
-    model: cloud_logging
+    model: vpn_logging
     explore: vpn_mexico_poc
     listens_to_filters: []
     field: vpn_uruguay_poc.app
+  - name: Username
+    title: Username
+    type: field_filter
+    default_value: ''
+    allow_multiple_values: true
+    required: false
+    ui_config:
+      type: tag_list
+      display: popover
+    model: vpn_logging
+    explore: vpn_uruguay
+    listens_to_filters: []
+    field: vpn_uruguay.username
