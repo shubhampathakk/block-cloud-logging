@@ -30,3 +30,11 @@ constant: table_uruguay {
   value: "vpn_uruguay_poc"
   export: override_required
 }
+constant: table_app_log {
+  value: "app_logs"
+  export: override_required
+}
+constant: table_adc_log {
+  value: "windows_event_id_4732"
+  export: override_required
+}

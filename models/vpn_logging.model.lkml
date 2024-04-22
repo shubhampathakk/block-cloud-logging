@@ -9,7 +9,6 @@ include: "/dashboards/*.dashboard.lookml"
 # use the Quick Help panel on the right to see documentation.
 
 
-
 explore: vpn_mexico_poc{
   label: "VPN test Dashboard"
   join: vpn_uruguay_poc {
