@@ -127,6 +127,12 @@ view: adc_logs {
     type: string
     sql: ${TABLE}.time ;;
   }
+
+  dimension: account_server{
+    type: string
+    sql: CONCAT(${subject_account_name}, ' - ' ,${dc_server}) ;;
+  }
+
   measure: count {
     type: count
     drill_fields: [detail*]
