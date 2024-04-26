@@ -770,9 +770,9 @@
       display: inline
       options: []
     model: vpn_logging
-    explore: vpn_mexico_poc
+    explore: vpn_mexico_logs
     listens_to_filters: []
-    field: vpn_uruguay_poc._partitiondate_date
+    field: vpn_uruguay_logs._partitiondate_date
   - name: IP
     title: IP
     type: field_filter
@@ -783,9 +783,9 @@
       type: tag_list
       display: popover
     model: vpn_logging
-    explore: vpn_mexico_poc
+    explore: vpn_mexico_logs
     listens_to_filters: []
-    field: vpn_uruguay_poc.ip
+    field: vpn_uruguay_logs.ip
   - name: Host
     title: Host
     type: field_filter
@@ -796,9 +796,9 @@
       type: checkboxes
       display: popover
     model: vpn_logging
-    explore: vpn_mexico_poc
+    explore: vpn_mexico_logs
     listens_to_filters: []
-    field: vpn_uruguay_poc.host
+    field: vpn_uruguay_logs.host
   - name: Reason
     title: Reason
     type: field_filter
@@ -809,9 +809,9 @@
       type: checkboxes
       display: popover
     model: vpn_logging
-    explore: vpn_mexico_poc
+    explore: vpn_mexico_logs
     listens_to_filters: []
-    field: vpn_uruguay_poc.reason
+    field: vpn_uruguay_logs.reason
   - name: App
     title: App
     type: field_filter
@@ -822,9 +822,9 @@
       type: checkboxes
       display: popover
     model: vpn_logging
-    explore: vpn_mexico_poc
+    explore: vpn_mexico_logs
     listens_to_filters: []
-    field: vpn_uruguay_poc.app
+    field: vpn_uruguay_logs.app
   - name: Username
     title: Username
     type: field_filter

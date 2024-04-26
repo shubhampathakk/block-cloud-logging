@@ -9,11 +9,11 @@ include: "/dashboards/*.dashboard.lookml"
 # use the Quick Help panel on the right to see documentation.
 
 
-explore: vpn_mexico_poc{
+explore: vpn_mexico_logs{
   label: "VPN test Dashboard"
-  join: vpn_uruguay_poc {
+  join: vpn_uruguay_logs {
     type: full_outer
     relationship: many_to_many
-    sql_on: ${vpn_mexico_poc.dap_user} = ${vpn_uruguay_poc.username} ;;
+    sql_on: ${vpn_mexico_logs.dap_user} = ${vpn_uruguay_logs.username} ;;
   }
 }

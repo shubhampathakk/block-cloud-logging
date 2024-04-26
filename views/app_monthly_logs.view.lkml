@@ -1,11 +1,10 @@
-view: app_logs {
-  #sql_table_name: `pso-gdc-japac-wedevelop-df.testing_time.log_workspace` ;;
+view: app_monthly_logs {
   #required_access_grants: [is_employee]
   derived_table: {
     sql:
-        SELECT DATE(_PARTITIONTIME) as day, host, ident, COUNT(host) as Volume, extradata
+        SELECT _PARTITIONTIME as day, host, ident, COUNT(host) as Volume, extradata
         FROM  @{PROJECT_ID}.@{DATASET_ID}.@{table_app_log}
-        WHERE DATE(_PARTITIONTIME) >= CURRENT_DATE()-3
+        WHERE DATE(_PARTITIONTIME) >= CURRENT_DATE()-30
         group by host,Extradata, ident, day
         order by host;;
   }

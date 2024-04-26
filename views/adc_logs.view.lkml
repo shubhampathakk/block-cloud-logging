@@ -133,6 +133,13 @@ view: adc_logs {
     sql: CONCAT(${subject_account_name}, ' - ' ,${dc_server}) ;;
   }
 
+  dimension: scotia_image_url {
+    type: string
+    sql: 'https://upload.wikimedia.org/wikipedia/commons/thumb/2/22/Scotiabank_logo.svg/2880px-Scotiabank_logo.svg.png' ;;
+    html: <img src="{{ value }}" width="300" height="200"> ;;
+  }
+
+
   measure: count {
     type: count
     drill_fields: [detail*]

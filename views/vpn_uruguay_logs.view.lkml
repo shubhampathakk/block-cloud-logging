@@ -1,8 +1,8 @@
 explore: vpn_uruguay {
-  from: vpn_uruguay_poc
+  from: vpn_uruguay_logs
 }
 
-view: vpn_uruguay_poc {
+view: vpn_uruguay_logs {
   sql_table_name: @{PROJECT_ID}.@{DATASET_ID}.@{table_uruguay} ;;
 
   dimension_group: _partitiondate {
@@ -116,10 +116,10 @@ view: vpn_uruguay_poc {
   measure: avg_duration{
     type: string
     sql: FORMAT_TIMESTAMP('%T', TIMESTAMP_SECONDS(cast(AVG(TIME_DIFF(TIME(
-    CAST(REGEXP_EXTRACT(${duration}, r"(\d+)h") AS INT64),
-    CAST(REGEXP_EXTRACT(${duration}, r"(\d+)m") AS INT64),
-    CAST(REGEXP_EXTRACT(${duration}, r"(\d+)s") AS INT64)
-  ) , TIME '00:00:00', SECOND)) as INT64))) ;;
+          CAST(REGEXP_EXTRACT(${duration}, r"(\d+)h") AS INT64),
+          CAST(REGEXP_EXTRACT(${duration}, r"(\d+)m") AS INT64),
+          CAST(REGEXP_EXTRACT(${duration}, r"(\d+)s") AS INT64)
+        ) , TIME '00:00:00', SECOND)) as INT64))) ;;
   }
   measure: grouped_bytes_xmt {
     type: sum
