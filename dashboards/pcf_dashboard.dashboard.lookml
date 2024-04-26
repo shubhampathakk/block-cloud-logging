@@ -1,17 +1,17 @@
 ---
-- dashboard: applications_monthly
-  title: Applications_Monthly
+- dashboard: pcf_dashboard
+  title: PCF Dashboard
   layout: newspaper
   preferred_viewer: dashboards-next
   description: ''
-  preferred_slug: mTIjJltkitQ9yy8D2u8GZT
+  preferred_slug: Vlfl7syuvYzmdoXGw4WEFO
   elements:
-  - title: APPs
-    name: APPs
-    model: app_monthly_logging
-    explore: app_monthly
+  - title: PCF Dashboard
+    name: PCF Dashboard
+    model: pcf_logging
+    explore: pcf_log
     type: single_value
-    fields: [app_monthly.total_app]
+    fields: [pcf_log.total_app]
     limit: 500
     column_limit: 50
     custom_color_enabled: true
@@ -25,21 +25,20 @@
     conditional_formatting_include_nulls: false
     defaults_version: 1
     listen:
-      App: app_monthly.app
-      Epm: app_monthly.epm
-      Host: app_monthly.host
-      Port: app_monthly.port
-      Date: app_monthly.date
+      Host: pcf_log.host
+      App: pcf_log.app
+      Epm: pcf_log.epm
+      Port: pcf_log.port
     row: 0
     col: 9
     width: 5
-    height: 2
-  - title: EPMs
-    name: EPMs
-    model: app_monthly_logging
-    explore: app_monthly
+    height: 3
+  - title: EMPs
+    name: EMPs
+    model: pcf_logging
+    explore: pcf_log
     type: single_value
-    fields: [app_monthly.total_epms]
+    fields: [pcf_log.total_epms]
     limit: 500
     column_limit: 50
     custom_color_enabled: true
@@ -54,21 +53,20 @@
     defaults_version: 1
     hidden_pivots: {}
     listen:
-      App: app_monthly.app
-      Epm: app_monthly.epm
-      Host: app_monthly.host
-      Port: app_monthly.port
-      Date: app_monthly.date
+      Host: pcf_log.host
+      App: pcf_log.app
+      Epm: pcf_log.epm
+      Port: pcf_log.port
     row: 0
     col: 14
     width: 5
-    height: 2
+    height: 3
   - title: Ports
     name: Ports
-    model: app_monthly_logging
-    explore: app_monthly
+    model: pcf_logging
+    explore: pcf_log
     type: single_value
-    fields: [app_monthly.total_ports]
+    fields: [pcf_log.total_ports]
     limit: 500
     column_limit: 50
     custom_color_enabled: true
@@ -83,32 +81,22 @@
     defaults_version: 1
     hidden_pivots: {}
     listen:
-      App: app_monthly.app
-      Epm: app_monthly.epm
-      Host: app_monthly.host
-      Port: app_monthly.port
-      Date: app_monthly.date
+      Host: pcf_log.host
+      App: pcf_log.app
+      Epm: pcf_log.epm
+      Port: pcf_log.port
     row: 0
     col: 19
     width: 5
-    height: 2
-  - name: ''
-    type: text
-    title_text: ''
-    subtitle_text: ''
-    body_text: <center><img src='https://upload.wikimedia.org/wikipedia/commons/thumb/2/22/Scotiabank_logo.svg/2880px-Scotiabank_logo.svg.png'  width="180"
-      height="25"></center>
-    row: 0
-    col: 0
-    width: 9
-    height: 2
-  - title: Applications
-    name: Applications
-    model: app_monthly_logging
-    explore: app_monthly
+    height: 3
+  - title: PCF Logs
+    name: PCF Logs
+    model: pcf_logging
+    explore: pcf_log
     type: looker_grid
-    fields: [app_monthly.date, app_monthly.host, app_monthly.epm, app_monthly.app]
-    sorts: [app_monthly.date desc]
+    fields: [pcf_log.event_source, pcf_log.host, pcf_log.app, pcf_log.epm, pcf_log.port,
+      pcf_log.ident, pcf_log.time, pcf_log.volume_host]
+    sorts: [pcf_log.volume_host desc 0]
     limit: 500
     column_limit: 50
     show_view_names: false
@@ -126,58 +114,34 @@
     rows_font_size: 12
     conditional_formatting_include_totals: false
     conditional_formatting_include_nulls: false
+    custom_color_enabled: true
+    show_single_value_title: true
+    show_comparison: false
+    comparison_type: value
+    comparison_reverse_colors: false
+    show_comparison_label: true
     defaults_version: 1
+    hidden_pivots: {}
     listen:
-      Host: app_monthly.host
-      App: app_monthly.app
-      Epm: app_monthly.epm
-      Port: app_monthly.port
-      Date: app_monthly.date
-    row: 2
+      Host: pcf_log.host
+      App: pcf_log.app
+      Epm: pcf_log.epm
+      Port: pcf_log.port
+    row: 3
     col: 0
     width: 24
-    height: 11
+    height: 10
+  - name: ''
+    type: text
+    title_text: ''
+    subtitle_text: ''
+    body_text: <center><img src='https://upload.wikimedia.org/wikipedia/commons/thumb/2/22/Scotiabank_logo.svg/2880px-Scotiabank_logo.svg.png'  width="180"
+      height="25"></center>
+    row: 0
+    col: 0
+    width: 9
+    height: 3
   filters:
-  - name: Date
-    title: Date
-    type: field_filter
-    default_value: after 1 month ago
-    allow_multiple_values: true
-    required: false
-    ui_config:
-      type: advanced
-      display: popover
-      options: []
-    model: app_monthly_logging
-    explore: app_monthly
-    listens_to_filters: []
-    field: app_monthly.date
-  - name: App
-    title: App
-    type: field_filter
-    default_value: ''
-    allow_multiple_values: true
-    required: false
-    ui_config:
-      type: tag_list
-      display: popover
-    model: app_monthly_logging
-    explore: app_monthly
-    listens_to_filters: []
-    field: app_monthly.app
-  - name: Epm
-    title: Epm
-    type: field_filter
-    default_value: ''
-    allow_multiple_values: true
-    required: false
-    ui_config:
-      type: tag_list
-      display: popover
-    model: app_monthly_logging
-    explore: app_monthly
-    listens_to_filters: []
-    field: app_monthly.epm
   - name: Host
     title: Host
     type: field_filter
@@ -185,12 +149,38 @@
     allow_multiple_values: true
     required: false
     ui_config:
-      type: tag_list
-      display: popover
-    model: app_monthly_logging
-    explore: app_monthly
+      type: button_group
+      display: inline
+    model: pcf_logging
+    explore: pcf_log
     listens_to_filters: []
-    field: app_monthly.host
+    field: pcf_log.host
+  - name: App
+    title: App
+    type: field_filter
+    default_value: ''
+    allow_multiple_values: true
+    required: false
+    ui_config:
+      type: button_group
+      display: inline
+    model: pcf_logging
+    explore: pcf_log
+    listens_to_filters: []
+    field: pcf_log.app
+  - name: Epm
+    title: Epm
+    type: field_filter
+    default_value: ''
+    allow_multiple_values: true
+    required: false
+    ui_config:
+      type: button_group
+      display: inline
+    model: pcf_logging
+    explore: pcf_log
+    listens_to_filters: []
+    field: pcf_log.epm
   - name: Port
     title: Port
     type: field_filter
@@ -198,9 +188,9 @@
     allow_multiple_values: true
     required: false
     ui_config:
-      type: tag_list
-      display: popover
-    model: app_monthly_logging
-    explore: app_monthly
+      type: button_group
+      display: inline
+    model: pcf_logging
+    explore: pcf_log
     listens_to_filters: []
-    field: app_monthly.port
+    field: pcf_log.port

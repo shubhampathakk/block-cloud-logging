@@ -1,4 +1,4 @@
-connection: "sample_bigquery_connection"
+connection: "@{CONNECTION_NAME}"
 
 include: "/views/*.view.lkml"                # include all views in the views/ folder in this project
 # include: "/**/*.view.lkml"                 # include all views in this project
@@ -18,3 +18,7 @@ include: "/views/*.view.lkml"                # include all views in the views/ f
 #     sql_on: ${users.id} = ${orders.user_id} ;;
 #   }
 # }
+
+explore: pcf_log {
+  from: pcf_logs
+}

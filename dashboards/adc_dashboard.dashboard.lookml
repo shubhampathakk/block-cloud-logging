@@ -125,12 +125,12 @@
     col: 0
     width: 4
     height: 3
-  - title: PIDs
-    name: PIDs
+  - title: Logs Count
+    name: Logs Count
     model: adc_logging
     explore: adc
     type: single_value
-    fields: [adc.total_pids]
+    fields: [adc.count]
     limit: 500
     column_limit: 50
     custom_color_enabled: true
@@ -510,8 +510,8 @@
     type: text
     title_text: ''
     subtitle_text: ''
-    body_text: <img src='https://upload.wikimedia.org/wikipedia/commons/thumb/2/22/Scotiabank_logo.svg/2880px-Scotiabank_logo.svg.png'  width="800"
-      height="150">
+    body_text: <center><img src='https://upload.wikimedia.org/wikipedia/commons/thumb/2/22/Scotiabank_logo.svg/2880px-Scotiabank_logo.svg.png'  width="600"
+      height="100"></center>
     row: 0
     col: 12
     width: 12

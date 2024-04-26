@@ -2,11 +2,9 @@ view: app_monthly_logs {
   #required_access_grants: [is_employee]
   derived_table: {
     sql:
-        SELECT _PARTITIONTIME as day, host, ident, COUNT(host) as Volume, extradata
+        SELECT DISTINCT host, extradata, TIMESTAMP(_PARTITIONTIME) as day
         FROM  @{PROJECT_ID}.@{DATASET_ID}.@{table_app_log}
-        WHERE DATE(_PARTITIONTIME) >= CURRENT_DATE()-30
-        group by host,Extradata, ident, day
-        order by host;;
+        WHERE DATE(_PARTITIONTIME) >= CURRENT_DATE()-30;;
   }
 
   # dimension_group: _partitiondate {
@@ -25,7 +23,7 @@ view: app_monthly_logs {
   # }
 
   dimension: date {
-    type: date
+    type: date_time
     sql: ${TABLE}.day ;;
   }
   # dimension: event_source {
@@ -40,10 +38,10 @@ view: app_monthly_logs {
     type: string
     sql: ${TABLE}.host ;;
   }
-  dimension: ident {
-    type: string
-    sql: ${TABLE}.ident ;;
-  }
+  # dimension: ident {
+  #   type: string
+  #   sql: ${TABLE}.ident ;;
+  # }
   # dimension: message {
   #   type: string
   #   sql: ${TABLE}.message ;;
@@ -60,11 +58,11 @@ view: app_monthly_logs {
   #   type: string
   #   sql: ${TABLE}.time ;;
   # }
-  dimension: Volume {
-    type: number
-    sql: ${TABLE}.Volume ;;
-    drill_fields: [host, count]
-  }
+  # dimension: Volume {
+  #   type: number
+  #   sql: ${TABLE}.Volume ;;
+  #   drill_fields: [host, count]
+  # }
 
   dimension: epm {
     type: string
@@ -85,17 +83,17 @@ view: app_monthly_logs {
   measure: total_app {
     type: count_distinct
     sql: ${app} ;;
-    drill_fields: [app,port, count]
+    drill_fields: [app,host, count]
   }
 
   measure: total_epms {
     type: count_distinct
     sql: ${epm} ;;
-    drill_fields: [epm,ident, count]
+    drill_fields: [epm,host, count]
   }
   measure: total_ports {
     type: count_distinct
     sql: ${port} ;;
-    drill_fields: [port, count]
+    drill_fields: [port,host, count]
   }
 }

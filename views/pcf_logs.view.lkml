@@ -23,6 +23,18 @@ view: pcf_logs {
     type: string
     sql: ${TABLE}.extradata ;;
   }
+  dimension: epm {
+    type: string
+    sql: regexp_substr(${extradata}, 'EPM=([^,]+)') ;;
+  }
+  dimension: app {
+    type: string
+    sql: regexp_substr(${extradata}, 'APP=([^,]+)') ;;
+  }
+  dimension: port {
+    type: string
+    sql: regexp_substr(${extradata}, 'PORT=([^,]+)') ;;
+  }
   dimension: host {
     type: string
     sql: ${TABLE}.host ;;
@@ -47,7 +59,29 @@ view: pcf_logs {
     type: string
     sql: ${TABLE}.time ;;
   }
+  measure: total_app {
+    type: count_distinct
+    sql: ${app} ;;
+    drill_fields: [app,host, count]
+  }
+
+  measure: total_epms {
+    type: count_distinct
+    sql: ${epm} ;;
+    drill_fields: [epm,host, count]
+  }
+  measure: total_ports {
+    type: count_distinct
+    sql: ${port} ;;
+    drill_fields: [port,host, count]
+  }
+
+
   measure: count {
     type: count
+  }
+  measure: volume_host {
+    type: count_distinct
+    sql: ${host} ;;
   }
 }

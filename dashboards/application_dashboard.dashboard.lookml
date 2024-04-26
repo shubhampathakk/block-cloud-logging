@@ -124,8 +124,8 @@
       App: logs.app
       Host: logs.host
     row: 0
-    col: 0
-    width: 8
+    col: 9
+    width: 5
     height: 2
   - title: EPMs
     name: EPMs
@@ -152,8 +152,8 @@
       App: logs.app
       Host: logs.host
     row: 0
-    col: 8
-    width: 8
+    col: 14
+    width: 5
     height: 2
   - title: Ports
     name: Ports
@@ -180,8 +180,18 @@
       App: logs.app
       Host: logs.host
     row: 0
-    col: 16
-    width: 8
+    col: 19
+    width: 5
+    height: 2
+  - name: ''
+    type: text
+    title_text: ''
+    subtitle_text: ''
+    body_text: <center><img src='https://upload.wikimedia.org/wikipedia/commons/thumb/2/22/Scotiabank_logo.svg/2880px-Scotiabank_logo.svg.png'  width="180"
+      height="25"></center>
+    row: 0
+    col: 0
+    width: 9
     height: 2
   filters:
   - name: Epm

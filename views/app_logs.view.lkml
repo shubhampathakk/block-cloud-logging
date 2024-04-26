@@ -86,17 +86,17 @@ view: app_logs {
   measure: total_app {
     type: count_distinct
     sql: ${app} ;;
-    drill_fields: [app,port, count]
+    drill_fields: [app,host, count]
   }
 
   measure: total_epms {
     type: count_distinct
     sql: ${epm} ;;
-    drill_fields: [epm,ident, count]
+    drill_fields: [epm,host, count]
   }
   measure: total_ports {
     type: count_distinct
     sql: ${port} ;;
-    drill_fields: [port, count]
+    drill_fields: [port,host, count]
   }
 }
