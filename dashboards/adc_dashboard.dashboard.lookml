@@ -238,8 +238,8 @@
     col: 8
     width: 8
     height: 6
-  - title: Volume of logs by Partition
-    name: Volume of logs by Partition
+  - title: Volume of logs by Day
+    name: Volume of logs by Day
     model: adc_logging
     explore: adc
     type: looker_area
@@ -288,22 +288,19 @@
     hidden_fields:
     listen: {}
     row: 12
-    col: 8
-    width: 16
+    col: 12
+    width: 12
     height: 6
-  - title: Event Types
-    name: Event Types
+  - title: Group - APP - EPM
+    name: Group - APP - EPM
     model: adc_logging
     explore: adc
-    type: looker_pie
-    fields: [adc.event_name, adc.count]
+    type: looker_column
+    fields: [adc.group_domain_name, adc.app, adc.epm, adc.count]
     sorts: [adc.count desc 0]
     limit: 500
     column_limit: 50
-    value_labels: legend
-    label_type: labPer
-    inner_radius: 50
-    x_axis_gridlines: false
+    x_axis_gridlines: true
     y_axis_gridlines: true
     show_view_names: false
     show_y_axis_labels: true
@@ -321,7 +318,7 @@
     limit_displayed_rows: false
     legend_position: center
     point_style: none
-    show_value_labels: false
+    show_value_labels: true
     label_density: 25
     x_axis_scale: auto
     y_axis_combined: true
@@ -330,6 +327,23 @@
     show_totals_labels: false
     show_silhouette: false
     totals_color: "#808080"
+    color_application:
+      collection_id: 7c56cc21-66e4-41c9-81ce-a60e1c3967b2
+      palette_id: 5d189dfc-4f46-46f3-822b-bfb0b61777b1
+      options:
+        steps: 5
+        reverse: false
+    y_axes: [{label: Count, orientation: left, series: [{axisId: adc.count, id: adc.count,
+            name: Adc}], showLabels: true, showValues: true, unpinAxis: false, tickDensity: default,
+        tickDensityCustom: 5, type: linear}]
+    x_axis_label: Group Domain - APP - EPM
+    x_axis_zoom: true
+    y_axis_zoom: true
+    series_colors: {}
+    show_dropoff: false
+    value_labels: legend
+    label_type: labPer
+    inner_radius: 50
     defaults_version: 1
     hidden_pivots: {}
     groupBars: true
@@ -347,10 +361,13 @@
     enable_conditional_formatting: false
     conditional_formatting_include_totals: false
     conditional_formatting_include_nulls: false
+    up_color: false
+    down_color: false
+    total_color: false
     listen: {}
-    row: 6
-    col: 16
-    width: 8
+    row: 12
+    col: 0
+    width: 12
     height: 6
   - title: App Distribution
     name: App Distribution
@@ -409,8 +426,8 @@
     conditional_formatting_include_totals: false
     conditional_formatting_include_nulls: false
     listen: {}
-    row: 12
-    col: 0
+    row: 6
+    col: 16
     width: 8
     height: 6
   - title: Host VS App
@@ -515,4 +532,104 @@
     row: 0
     col: 12
     width: 12
+    height: 6
+  - title: Per week log flow for Accounts
+    name: Per week log flow for Accounts
+    model: adc_logging
+    explore: adc
+    type: looker_timeline
+    fields: [adc.count, adc.subject_account_name, adc.partitiondate_one_week_less,
+      adc._partitiondate_date]
+    sorts: [adc.count desc 0]
+    limit: 500
+    column_limit: 50
+    groupBars: true
+    labelSize: 9pt
+    showLegend: true
+    color_application:
+      collection_id: 7c56cc21-66e4-41c9-81ce-a60e1c3967b2
+      palette_id: 5d189dfc-4f46-46f3-822b-bfb0b61777b1
+      options:
+        steps: 5
+    hidden_pivots: {}
+    x_axis_gridlines: false
+    y_axis_gridlines: true
+    show_view_names: false
+    show_y_axis_labels: true
+    show_y_axis_ticks: true
+    y_axis_tick_density: default
+    y_axis_tick_density_custom: 5
+    show_x_axis_label: true
+    show_x_axis_ticks: true
+    y_axis_scale_mode: linear
+    x_axis_reversed: false
+    y_axis_reversed: false
+    plot_size_by_field: false
+    trellis: ''
+    stacking: ''
+    limit_displayed_rows: false
+    legend_position: center
+    point_style: none
+    show_value_labels: false
+    label_density: 25
+    x_axis_scale: auto
+    y_axis_combined: true
+    show_null_points: true
+    interpolation: linear
+    defaults_version: 1
+    listen: {}
+    row: 24
+    col: 0
+    width: 24
+    height: 7
+  - title: Last 3 Days log flow for Group
+    name: Last 3 Days log flow for Group
+    model: adc_logging
+    explore: adc
+    type: looker_timeline
+    fields: [adc.count, adc.group_domain_name, adc.partitiondate_minus_3_days, adc._partitiondate_date]
+    sorts: [adc.count desc 0]
+    limit: 500
+    column_limit: 50
+    groupBars: true
+    labelSize: 9pt
+    showLegend: true
+    color_application:
+      collection_id: 7c56cc21-66e4-41c9-81ce-a60e1c3967b2
+      palette_id: 5d189dfc-4f46-46f3-822b-bfb0b61777b1
+      options:
+        steps: 5
+    hidden_pivots: {}
+    x_axis_gridlines: false
+    y_axis_gridlines: true
+    show_view_names: false
+    show_y_axis_labels: true
+    show_y_axis_ticks: true
+    y_axis_tick_density: default
+    y_axis_tick_density_custom: 5
+    show_x_axis_label: true
+    show_x_axis_ticks: true
+    y_axis_scale_mode: linear
+    x_axis_reversed: false
+    y_axis_reversed: false
+    plot_size_by_field: false
+    trellis: ''
+    stacking: ''
+    limit_displayed_rows: false
+    legend_position: center
+    point_style: none
+    show_value_labels: false
+    label_density: 25
+    x_axis_scale: auto
+    y_axis_combined: true
+    show_null_points: true
+    interpolation: linear
+    defaults_version: 1
+    show_totals_labels: false
+    show_silhouette: false
+    totals_color: "#808080"
+    listen: {}
+    row: 31
+    col: 0
+    width: 24
     height: 6

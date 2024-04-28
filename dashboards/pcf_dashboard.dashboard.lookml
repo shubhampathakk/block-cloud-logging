@@ -6,8 +6,8 @@
   description: ''
   preferred_slug: Vlfl7syuvYzmdoXGw4WEFO
   elements:
-  - title: PCF Dashboard
-    name: PCF Dashboard
+  - title: APPs
+    name: APPs
     model: pcf_logging
     explore: pcf_log
     type: single_value
@@ -29,6 +29,8 @@
       App: pcf_log.app
       Epm: pcf_log.epm
       Port: pcf_log.port
+      Ident: pcf_log.ident
+      " Partitiondate Date": pcf_log._partitiondate_date
     row: 0
     col: 9
     width: 5
@@ -57,6 +59,8 @@
       App: pcf_log.app
       Epm: pcf_log.epm
       Port: pcf_log.port
+      Ident: pcf_log.ident
+      " Partitiondate Date": pcf_log._partitiondate_date
     row: 0
     col: 14
     width: 5
@@ -85,6 +89,8 @@
       App: pcf_log.app
       Epm: pcf_log.epm
       Port: pcf_log.port
+      Ident: pcf_log.ident
+      " Partitiondate Date": pcf_log._partitiondate_date
     row: 0
     col: 19
     width: 5
@@ -94,9 +100,9 @@
     model: pcf_logging
     explore: pcf_log
     type: looker_grid
-    fields: [pcf_log.event_source, pcf_log.host, pcf_log.app, pcf_log.epm, pcf_log.port,
-      pcf_log.ident, pcf_log.time, pcf_log.volume_host]
-    sorts: [pcf_log.volume_host desc 0]
+    fields: [pcf_log.UID, pcf_log.log_type, pcf_log.event_source, pcf_log.host, pcf_log.app,
+      pcf_log.epm, pcf_log.port, pcf_log.ident, pcf_log.time, pcf_log.volume_host]
+    sorts: [pcf_log.volume_host desc]
     limit: 500
     column_limit: 50
     show_view_names: false
@@ -127,6 +133,8 @@
       App: pcf_log.app
       Epm: pcf_log.epm
       Port: pcf_log.port
+      Ident: pcf_log.ident
+      " Partitiondate Date": pcf_log._partitiondate_date
     row: 3
     col: 0
     width: 24
@@ -142,6 +150,20 @@
     width: 9
     height: 3
   filters:
+  - name: " Partitiondate Date"
+    title: " Partitiondate Date"
+    type: field_filter
+    default_value: 1 month
+    allow_multiple_values: true
+    required: false
+    ui_config:
+      type: advanced
+      display: popover
+      options: []
+    model: pcf_logging
+    explore: pcf_log
+    listens_to_filters: []
+    field: pcf_log._partitiondate_date
   - name: Host
     title: Host
     type: field_filter
@@ -194,3 +216,16 @@
     explore: pcf_log
     listens_to_filters: []
     field: pcf_log.port
+  - name: Ident
+    title: Ident
+    type: field_filter
+    default_value: ''
+    allow_multiple_values: true
+    required: false
+    ui_config:
+      type: tag_list
+      display: popover
+    model: pcf_logging
+    explore: pcf_log
+    listens_to_filters: []
+    field: pcf_log.ident
