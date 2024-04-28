@@ -582,8 +582,8 @@
     col: 0
     width: 24
     height: 7
-  - title: Last 3 Days log flow for Group
-    name: Last 3 Days log flow for Group
+  - title: 3 Days log flow for Group
+    name: 3 Days log flow for Group
     model: adc_logging
     explore: adc
     type: looker_timeline
