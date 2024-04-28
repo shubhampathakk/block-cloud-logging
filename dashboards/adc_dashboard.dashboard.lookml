@@ -493,8 +493,8 @@
     col: 0
     width: 13
     height: 6
-  - title: New Tile
-    name: New Tile
+  - title: Logs
+    name: Logs
     model: adc_logging
     explore: adc
     type: looker_grid
