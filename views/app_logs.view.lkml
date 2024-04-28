@@ -10,29 +10,26 @@ view: app_logs {
         order by host;;
   }
 
-  # dimension_group: _partitiondate {
-  #   type: time
-  #   timeframes: [raw, date, week, month, quarter, year]
-  #   convert_tz: no
-  #   datatype: date
-  #   sql: ${TABLE}._PARTITIONDATE ;;
-  # }
-  # dimension_group: _partitiontime {
-  #   type: time
-  #   timeframes: [raw, date, week, month, quarter, year]
-  #   convert_tz: no
-  #   datatype: date
-  #   sql: ${TABLE}._PARTITIONTIME ;;
-  # }
+  dimension_group: _partitiondate {
+    type: time
+    timeframes: [raw, date, week, month, quarter, year]
+    convert_tz: no
+    datatype: date
+    sql: ${TABLE}._PARTITIONDATE ;;
+  }
+  dimension_group: _partitiontime {
+    type: time
+    timeframes: [raw, date, week, month, quarter, year]
+    convert_tz: no
+    datatype: date
+    sql: ${TABLE}._PARTITIONTIME ;;
+  }
 
   dimension: date {
     type: date
     sql: ${TABLE}.day ;;
   }
-  # dimension: event_source {
-  #   type: string
-  #   sql: ${TABLE}.event_source ;;
-  # }
+
   dimension: extradata {
     type: string
     sql: ${TABLE}.extradata ;;
@@ -45,22 +42,7 @@ view: app_logs {
     type: string
     sql: ${TABLE}.ident ;;
   }
-  # dimension: message {
-  #   type: string
-  #   sql: ${TABLE}.message ;;
-  # }
-  # dimension: msgid {
-  #   type: string
-  #   sql: ${TABLE}.msgid ;;
-  # }
-  # dimension: pid {
-  #   type: string
-  #   sql: ${TABLE}.pid ;;
-  # }
-  # dimension: time {
-  #   type: string
-  #   sql: ${TABLE}.time ;;
-  # }
+
   dimension: Volume {
     type: number
     sql: ${TABLE}.Volume ;;

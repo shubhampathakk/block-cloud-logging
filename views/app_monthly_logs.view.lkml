@@ -7,29 +7,26 @@ view: app_monthly_logs {
         WHERE DATE(_PARTITIONTIME) >= CURRENT_DATE()-30;;
   }
 
-  # dimension_group: _partitiondate {
-  #   type: time
-  #   timeframes: [raw, date, week, month, quarter, year]
-  #   convert_tz: no
-  #   datatype: date
-  #   sql: ${TABLE}._PARTITIONDATE ;;
-  # }
-  # dimension_group: _partitiontime {
-  #   type: time
-  #   timeframes: [raw, date, week, month, quarter, year]
-  #   convert_tz: no
-  #   datatype: date
-  #   sql: ${TABLE}._PARTITIONTIME ;;
-  # }
+  dimension_group: _partitiondate {
+    type: time
+    timeframes: [raw, date, week, month, quarter, year]
+    convert_tz: no
+    datatype: date
+    sql: ${TABLE}._PARTITIONDATE ;;
+  }
+  dimension_group: _partitiontime {
+    type: time
+    timeframes: [raw, date, week, month, quarter, year]
+    convert_tz: no
+    datatype: date
+    sql: ${TABLE}._PARTITIONTIME ;;
+  }
 
   dimension: date {
     type: date_time
     sql: ${TABLE}.day ;;
   }
-  # dimension: event_source {
-  #   type: string
-  #   sql: ${TABLE}.event_source ;;
-  # }
+
   dimension: extradata {
     type: string
     sql: ${TABLE}.extradata ;;
@@ -38,31 +35,6 @@ view: app_monthly_logs {
     type: string
     sql: ${TABLE}.host ;;
   }
-  # dimension: ident {
-  #   type: string
-  #   sql: ${TABLE}.ident ;;
-  # }
-  # dimension: message {
-  #   type: string
-  #   sql: ${TABLE}.message ;;
-  # }
-  # dimension: msgid {
-  #   type: string
-  #   sql: ${TABLE}.msgid ;;
-  # }
-  # dimension: pid {
-  #   type: string
-  #   sql: ${TABLE}.pid ;;
-  # }
-  # dimension: time {
-  #   type: string
-  #   sql: ${TABLE}.time ;;
-  # }
-  # dimension: Volume {
-  #   type: number
-  #   sql: ${TABLE}.Volume ;;
-  #   drill_fields: [host, count]
-  # }
 
   dimension: epm {
     type: string
@@ -76,6 +48,7 @@ view: app_monthly_logs {
     type: string
     sql: regexp_substr(${extradata}, 'PORT=([^,]+)') ;;
   }
+
   measure: count {
     type: count
   }
