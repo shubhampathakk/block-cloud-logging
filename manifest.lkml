@@ -36,3 +36,8 @@ constant: table_adc_log {
   value: "windows_event_id_4732"
   export: override_required
 }
+## Used in pcf_logs.view as sql_table_name
+constant: table_pcf {
+  value: "pcf_nonprod_logs"
+  export: override_required
+}

@@ -1,5 +1,5 @@
 view: pcf_logs {
-  sql_table_name: `pso-gdc-japac-wedevelop-df.dataflow_demo.pcf_logs` ;;
+  sql_table_name: @{PROJECT_ID}.@{DATASET_ID}.@{table_pcf} ;;
 
   dimension_group: _partitiondate {
     type: time
@@ -59,6 +59,31 @@ view: pcf_logs {
     type: string
     sql: ${TABLE}.time ;;
   }
+  #customer dimesions
+  dimension:  UID{
+    type: string
+    sql: CASE
+          WHEN CONTAINS_SUBSTR(${message}, "UID") THEN REGEXP_EXTRACT(${message}, r'"UID:([^"]+)"')
+          ELSE "Doesn't contain UID"
+          END;;
+    html:
+        {% if value == "Doesn't contain UID" %}
+          <span style = "color: red;"> {{rendered_value}} </span>
+        {% endif %};;
+  }
+  dimension:  log_type{
+    type: string
+    sql: CASE
+          WHEN CONTAINS_SUBSTR(${message}, "INFO") THEN "INFO"
+          WHEN CONTAINS_SUBSTR(${message}, "ERROR") THEN "ERROR"
+          ELSE "Doesn't contain type"
+          END;;
+    html:
+        {% if value == "Doesn't contain type" %}
+          <span style = "color: red;"> {{rendered_value}} </span>
+        {% endif %};;
+  }
+
   measure: total_app {
     type: count_distinct
     sql: ${app} ;;

@@ -8,6 +8,14 @@ view: adc_logs {
     datatype: date
     sql: ${TABLE}._PARTITIONDATE ;;
   }
+  dimension: partitiondate_one_week_less{
+    type: date
+    sql: DATE_SUB(${_partitiondate_date}, INTERVAL 7 DAY)  ;;
+  }
+  dimension: partitiondate_minus_3_days{
+    type: date
+    sql: DATE_SUB(${_partitiondate_date}, INTERVAL 3 DAY)  ;;
+  }
   dimension_group: _partitiontime {
     type: time
     timeframes: [raw, date, week, month, quarter, year]

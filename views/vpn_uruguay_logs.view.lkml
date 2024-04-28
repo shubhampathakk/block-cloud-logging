@@ -104,6 +104,7 @@ view: vpn_uruguay_logs {
     type: count
     drill_fields: [username]
   }
+  #custom measures
   measure: distinct_apps {
     type: count_distinct
     sql: ${app} ;;
