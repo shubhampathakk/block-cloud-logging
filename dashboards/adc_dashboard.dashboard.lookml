@@ -25,7 +25,13 @@
     conditional_formatting_include_nulls: false
     hidden_pivots: {}
     defaults_version: 1
-    listen: {}
+    listen:
+      Group Domain Name: adc.group_domain_name
+      Pid: adc.pid
+      Port: adc.port
+      App: adc.app
+      Epm: adc.epm
+      Date: adc.date
     row: 3
     col: 8
     width: 4
@@ -49,7 +55,13 @@
     conditional_formatting_include_nulls: false
     hidden_pivots: {}
     defaults_version: 1
-    listen: {}
+    listen:
+      Group Domain Name: adc.group_domain_name
+      Pid: adc.pid
+      Port: adc.port
+      App: adc.app
+      Epm: adc.epm
+      Date: adc.date
     row: 0
     col: 4
     width: 4
@@ -73,7 +85,13 @@
     conditional_formatting_include_nulls: false
     hidden_pivots: {}
     defaults_version: 1
-    listen: {}
+    listen:
+      Group Domain Name: adc.group_domain_name
+      Pid: adc.pid
+      Port: adc.port
+      App: adc.app
+      Epm: adc.epm
+      Date: adc.date
     row: 0
     col: 8
     width: 4
@@ -96,7 +114,13 @@
     conditional_formatting_include_totals: false
     conditional_formatting_include_nulls: false
     defaults_version: 1
-    listen: {}
+    listen:
+      Group Domain Name: adc.group_domain_name
+      Pid: adc.pid
+      Port: adc.port
+      App: adc.app
+      Epm: adc.epm
+      Date: adc.date
     row: 0
     col: 0
     width: 4
@@ -120,7 +144,13 @@
     conditional_formatting_include_nulls: false
     defaults_version: 1
     hidden_pivots: {}
-    listen: {}
+    listen:
+      Group Domain Name: adc.group_domain_name
+      Pid: adc.pid
+      Port: adc.port
+      App: adc.app
+      Epm: adc.epm
+      Date: adc.date
     row: 3
     col: 0
     width: 4
@@ -144,7 +174,13 @@
     conditional_formatting_include_nulls: false
     defaults_version: 1
     hidden_pivots: {}
-    listen: {}
+    listen:
+      Group Domain Name: adc.group_domain_name
+      Pid: adc.pid
+      Port: adc.port
+      App: adc.app
+      Epm: adc.epm
+      Date: adc.date
     row: 3
     col: 4
     width: 4
@@ -188,17 +224,23 @@
     show_silhouette: false
     totals_color: "#808080"
     defaults_version: 1
-    listen: {}
+    listen:
+      Group Domain Name: adc.group_domain_name
+      Pid: adc.pid
+      Port: adc.port
+      App: adc.app
+      Epm: adc.epm
+      Date: adc.date
     row: 6
     col: 0
     width: 8
     height: 6
-  - title: Log Distribution by Account
-    name: Log Distribution by Account
+  - title: Log Distribution by Group
+    name: Log Distribution by Group
     model: adc_logging
     explore: adc
     type: looker_pie
-    fields: [adc.count, adc.account_server]
+    fields: [adc.count, adc.group_domain_name]
     sorts: [adc.count desc 0]
     limit: 500
     column_limit: 50
@@ -233,7 +275,13 @@
     show_silhouette: false
     totals_color: "#808080"
     defaults_version: 1
-    listen: {}
+    listen:
+      Group Domain Name: adc.group_domain_name
+      Pid: adc.pid
+      Port: adc.port
+      App: adc.app
+      Epm: adc.epm
+      Date: adc.date
     row: 6
     col: 8
     width: 8
@@ -286,7 +334,13 @@
     labelSize: 10pt
     showLegend: true
     hidden_fields:
-    listen: {}
+    listen:
+      Group Domain Name: adc.group_domain_name
+      Pid: adc.pid
+      Port: adc.port
+      App: adc.app
+      Epm: adc.epm
+      Date: adc.date
     row: 12
     col: 12
     width: 12
@@ -364,7 +418,13 @@
     up_color: false
     down_color: false
     total_color: false
-    listen: {}
+    listen:
+      Group Domain Name: adc.group_domain_name
+      Pid: adc.pid
+      Port: adc.port
+      App: adc.app
+      Epm: adc.epm
+      Date: adc.date
     row: 12
     col: 0
     width: 12
@@ -425,73 +485,16 @@
     enable_conditional_formatting: false
     conditional_formatting_include_totals: false
     conditional_formatting_include_nulls: false
-    listen: {}
+    listen:
+      Group Domain Name: adc.group_domain_name
+      Pid: adc.pid
+      Port: adc.port
+      App: adc.app
+      Epm: adc.epm
+      Date: adc.date
     row: 6
     col: 16
     width: 8
-    height: 6
-  - title: Host VS App
-    name: Host VS App
-    model: adc_logging
-    explore: adc
-    type: looker_donut_multiples
-    fields: [adc.count, adc.app, adc.host]
-    pivots: [adc.host]
-    sorts: [adc.host, adc.app, adc.count desc 0]
-    limit: 500
-    column_limit: 50
-    show_value_labels: false
-    font_size: 12
-    value_labels: legend
-    label_type: labPer
-    inner_radius: 50
-    x_axis_gridlines: false
-    y_axis_gridlines: true
-    show_view_names: false
-    show_y_axis_labels: true
-    show_y_axis_ticks: true
-    y_axis_tick_density: default
-    y_axis_tick_density_custom: 5
-    show_x_axis_label: true
-    show_x_axis_ticks: true
-    y_axis_scale_mode: linear
-    x_axis_reversed: false
-    y_axis_reversed: false
-    plot_size_by_field: false
-    trellis: ''
-    stacking: ''
-    limit_displayed_rows: false
-    legend_position: center
-    point_style: none
-    label_density: 25
-    x_axis_scale: auto
-    y_axis_combined: true
-    ordering: none
-    show_null_labels: false
-    show_totals_labels: false
-    show_silhouette: false
-    totals_color: "#808080"
-    defaults_version: 1
-    hidden_pivots: {}
-    groupBars: true
-    labelSize: 10pt
-    showLegend: true
-    hidden_fields:
-    show_null_points: true
-    interpolation: linear
-    custom_color_enabled: true
-    show_single_value_title: true
-    show_comparison: false
-    comparison_type: value
-    comparison_reverse_colors: false
-    show_comparison_label: true
-    enable_conditional_formatting: false
-    conditional_formatting_include_totals: false
-    conditional_formatting_include_nulls: false
-    listen: {}
-    row: 18
-    col: 0
-    width: 13
     height: 6
   - title: Logs
     name: Logs
@@ -518,10 +521,16 @@
     conditional_formatting_include_totals: false
     conditional_formatting_include_nulls: false
     defaults_version: 1
-    listen: {}
-    row: 18
-    col: 13
-    width: 11
+    listen:
+      Group Domain Name: adc.group_domain_name
+      Pid: adc.pid
+      Port: adc.port
+      App: adc.app
+      Epm: adc.epm
+      Date: adc.date
+    row: 25
+    col: 14
+    width: 10
     height: 6
   - name: ''
     type: text
@@ -533,14 +542,13 @@
     col: 12
     width: 12
     height: 6
-  - title: Per week log flow for Accounts
-    name: Per week log flow for Accounts
+  - title: Per week log flow for EPMs
+    name: Per week log flow for EPMs
     model: adc_logging
     explore: adc
     type: looker_timeline
-    fields: [adc.count, adc.subject_account_name, adc.partitiondate_one_week_less,
-      adc._partitiondate_date]
-    sorts: [adc.count desc 0]
+    fields: [adc.epm, adc.partitiondate_one_week_less, adc._partitiondate_date, adc.count]
+    sorts: [adc.count desc]
     limit: 500
     column_limit: 50
     groupBars: true
@@ -577,11 +585,17 @@
     show_null_points: true
     interpolation: linear
     defaults_version: 1
-    listen: {}
-    row: 24
+    listen:
+      Group Domain Name: adc.group_domain_name
+      Pid: adc.pid
+      Port: adc.port
+      App: adc.app
+      Epm: adc.epm
+      Date: adc.date
+    row: 31
     col: 0
     width: 24
-    height: 7
+    height: 8
   - title: 3 Days log flow for Group
     name: 3 Days log flow for Group
     model: adc_logging
@@ -628,8 +642,173 @@
     show_totals_labels: false
     show_silhouette: false
     totals_color: "#808080"
-    listen: {}
-    row: 31
+    listen:
+      Group Domain Name: adc.group_domain_name
+      Pid: adc.pid
+      Port: adc.port
+      App: adc.app
+      Epm: adc.epm
+      Date: adc.date
+    row: 25
+    col: 0
+    width: 14
+    height: 6
+  - title: Detailed Logs
+    name: Detailed Logs
+    model: adc_logging
+    explore: adc
+    type: looker_grid
+    fields: [adc.count, adc.account_server, adc.app, adc.dc_server, adc.destination_ip,
+      adc.event_name, adc.port, adc.subject_account_name]
+    sorts: [adc.count desc]
+    limit: 500
+    column_limit: 50
+    show_view_names: false
+    show_row_numbers: true
+    transpose: false
+    truncate_text: true
+    hide_totals: false
+    hide_row_totals: false
+    size_to_fit: true
+    table_theme: white
+    limit_displayed_rows: false
+    enable_conditional_formatting: false
+    header_text_alignment: left
+    header_font_size: 12
+    rows_font_size: 12
+    conditional_formatting_include_totals: false
+    conditional_formatting_include_nulls: false
+    show_value_labels: false
+    font_size: 12
+    value_labels: legend
+    label_type: labPer
+    inner_radius: 50
+    x_axis_gridlines: false
+    y_axis_gridlines: true
+    show_y_axis_labels: true
+    show_y_axis_ticks: true
+    y_axis_tick_density: default
+    y_axis_tick_density_custom: 5
+    show_x_axis_label: true
+    show_x_axis_ticks: true
+    y_axis_scale_mode: linear
+    x_axis_reversed: false
+    y_axis_reversed: false
+    plot_size_by_field: false
+    trellis: ''
+    stacking: ''
+    legend_position: center
+    point_style: none
+    label_density: 25
+    x_axis_scale: auto
+    y_axis_combined: true
+    ordering: none
+    show_null_labels: false
+    show_totals_labels: false
+    show_silhouette: false
+    totals_color: "#808080"
+    defaults_version: 1
+    hidden_pivots: {}
+    groupBars: true
+    labelSize: 10pt
+    showLegend: true
+    hidden_fields:
+    show_null_points: true
+    interpolation: linear
+    custom_color_enabled: true
+    show_single_value_title: true
+    show_comparison: false
+    comparison_type: value
+    comparison_reverse_colors: false
+    show_comparison_label: true
+    listen:
+      Group Domain Name: adc.group_domain_name
+      Pid: adc.pid
+      Port: adc.port
+      App: adc.app
+      Epm: adc.epm
+      Date: adc.date
+    row: 18
     col: 0
     width: 24
-    height: 6
+    height: 7
+  filters:
+  - name: Date
+    title: Date
+    type: field_filter
+    default_value: after 1 month ago
+    allow_multiple_values: true
+    required: false
+    ui_config:
+      type: advanced
+      display: popover
+      options: []
+    model: adc_logging
+    explore: adc
+    listens_to_filters: []
+    field: adc.date
+  - name: Group Domain Name
+    title: Group Domain Name
+    type: field_filter
+    default_value: ''
+    allow_multiple_values: true
+    required: false
+    ui_config:
+      type: checkboxes
+      display: popover
+    model: adc_logging
+    explore: adc
+    listens_to_filters: []
+    field: adc.group_domain_name
+  - name: Pid
+    title: Pid
+    type: field_filter
+    default_value: ''
+    allow_multiple_values: true
+    required: false
+    ui_config:
+      type: tag_list
+      display: popover
+    model: adc_logging
+    explore: adc
+    listens_to_filters: []
+    field: adc.pid
+  - name: Port
+    title: Port
+    type: field_filter
+    default_value: ''
+    allow_multiple_values: true
+    required: false
+    ui_config:
+      type: tag_list
+      display: popover
+    model: adc_logging
+    explore: adc
+    listens_to_filters: []
+    field: adc.port
+  - name: App
+    title: App
+    type: field_filter
+    default_value: ''
+    allow_multiple_values: true
+    required: false
+    ui_config:
+      type: tag_list
+      display: popover
+    model: adc_logging
+    explore: adc
+    listens_to_filters: []
+    field: adc.app
+  - name: Epm
+    title: Epm
+    type: field_filter
+    default_value: ''
+    allow_multiple_values: true
+    required: false
+    ui_config:
+      type: checkboxes
+      display: popover
+    model: adc_logging
+    explore: adc
+    listens_to_filters: []
+    field: adc.epm

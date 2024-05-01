@@ -1,5 +1,8 @@
 view: adc_logs {
-  sql_table_name: @{PROJECT_ID}.@{DATASET_ID}.@{table_adc_log} ;;
+  derived_table:{
+    sql: select TIMESTAMP(_PARTITIONTIME) as day, * from @{PROJECT_ID}.@{DATASET_ID}.@{table_adc_log}
+    WHERE DATE(_PARTITIONTIME) >= CURRENT_DATE()-30;;
+  }
 
   dimension_group: _partitiondate {
     type: time
@@ -22,6 +25,10 @@ view: adc_logs {
     convert_tz: no
     datatype: date
     sql: ${TABLE}._PARTITIONTIME ;;
+  }
+  dimension: date {
+    type: date_time
+    sql:  ${TABLE}.day;;
   }
   dimension: additional_information {
     type: string
