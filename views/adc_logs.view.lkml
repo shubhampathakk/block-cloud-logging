@@ -1,6 +1,6 @@
 view: adc_logs {
   derived_table:{
-    sql: select TIMESTAMP(_PARTITIONTIME) as day, * from @{PROJECT_ID}.@{DATASET_ID}.@{table_adc_log}
+    sql: select TIMESTAMP(_PARTITIONTIME) as day,_PARTITIONTIME,_PARTITIONDATE, * from @{PROJECT_ID}.@{DATASET_ID}.@{table_adc_log}
     WHERE DATE(_PARTITIONTIME) >= CURRENT_DATE()-30;;
   }
 
