@@ -4,7 +4,7 @@ view: app_monthly_logs {
     sql:
         SELECT DISTINCT host, extradata, TIMESTAMP(_PARTITIONTIME) as day
         FROM  @{PROJECT_ID}.@{DATASET_ID}.@{table_app_log}
-        WHERE DATE(_PARTITIONTIME) >= CURRENT_DATE()-30;;
+        WHERE DATE(_PARTITIONTIME) >= CURRENT_DATE()-120;;
   }
 
   dimension_group: _partitiondate {

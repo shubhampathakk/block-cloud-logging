@@ -5,7 +5,7 @@ view: app_logs {
     sql:
         SELECT DATE(_PARTITIONTIME) as day, host, ident, COUNT(host) as Volume, extradata
         FROM  @{PROJECT_ID}.@{DATASET_ID}.@{table_app_log}
-        WHERE DATE(_PARTITIONTIME) >= CURRENT_DATE()-3
+        WHERE DATE(_PARTITIONTIME) >= CURRENT_DATE()-120
         group by host,Extradata, ident, day
         order by host;;
   }
