@@ -61,7 +61,15 @@ view: conv {
   }
 
   dimension: conversion_date {
-    type: date
+    type: date_time
+    sql:  ${TABLE}.conversion_date;;
+  }
+
+  dimension_group: conversion_date_time {
+    type: time
+    timeframes: [raw, date, week, month, quarter, year]
+    convert_tz: no
+    datatype: date
     sql:  ${TABLE}.conversion_date;;
   }
 

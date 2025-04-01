@@ -113,13 +113,13 @@ view: amt {
     sql: ${TABLE}.NetSales_ZS_NETSAL ;;
   }
   measure: delivery_customer_freight_zydcf {
-    type: number
+    type: sum
     description: "Delivery Customer freight"
-    sql: ${TABLE}.DeliveryCustomerFreight_ZYDCF ;;
+    sql: round(${TABLE}.DeliveryCustomerFreight_ZYDCF * POWER(10, 2 - if(${tcurx.currdec} is null, 2, ${tcurx.currdec})) * ${conv.ukurs}, 2) ;;
   }
   measure: net_revenue_zs_netrev {
     type: sum
     description: "Net Revenue"
-    sql: ${TABLE}.NetRevenue_ZS_NETREV ;;
+    sql: round(${TABLE}.NetRevenue_ZS_NETREV * POWER(10, 2 - if(${tcurx.currdec} is null, 2, ${tcurx.currdec})) * ${conv.ukurs}, 2) ;;
   }
 }
