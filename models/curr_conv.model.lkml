@@ -4,11 +4,12 @@ include: "/views/**/*.view"               # include all views in the views/ fold
 
 explore: amt {
   join: conv {
-    relationship: one_to_one
-    sql_on: ${amt.sd_document_currency_doc_currcy} = ${conv.fcurr} ;;
+    relationship: many_to_one
+    sql_on: ${amt.sd_document_currency_doc_currcy} = ${conv.fcurr}
+    --AND ${amt.zcurrdate_date} = ${conv.conversion_date};;  # Changed this line
   }
   join: tcurx {
-    relationship: one_to_one
+    relationship: many_to_one
     sql_on: ${amt.sd_document_currency_doc_currcy} = ${tcurx.currkey} ;;
   }
 }

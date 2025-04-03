@@ -1,4 +1,3 @@
----
 - dashboard: currency_translation
   title: Currency translation
   layout: newspaper
@@ -8,7 +7,7 @@
   elements:
   - title: Currency translation
     name: Currency translation
-    model: zinbobu
+    model: curr_conv
     explore: amt
     type: table
     fields: [amt.product_group, amt.sales_document_doc_number, amt.sd_document_currency_doc_currcy,
@@ -50,7 +49,7 @@
       display: popover
       options:
       - EUR
-    model: zinbobu
+    model: curr_conv
     explore: amt
     listens_to_filters: []
     field: conv.tcurr
@@ -63,7 +62,7 @@
     ui_config:
       type: button_group
       display: popover
-    model: zinbobu
+    model: curr_conv
     explore: amt
     listens_to_filters: []
     field: amt.TypeBudgetForecastTarget_ZTYPE
@@ -77,7 +76,7 @@
       type: day_range_picker
       display: inline
       options: []
-    model: zinbobu
+    model: curr_conv
     explore: amt
     listens_to_filters: []
     field: conv.conversion_date_time_date

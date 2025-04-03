@@ -61,7 +61,7 @@ view: conv {
   }
 
   dimension: conversion_date {
-    type: date_time
+    type: date
     sql:  ${TABLE}.conversion_date;;
   }
 
