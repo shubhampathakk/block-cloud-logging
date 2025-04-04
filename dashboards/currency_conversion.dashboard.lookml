@@ -1,3 +1,4 @@
+---
 - dashboard: currency_translation
   title: Currency translation
   layout: newspaper
@@ -7,13 +8,16 @@
   elements:
   - title: Currency translation
     name: Currency translation
-    model: curr_conv
+    model: zinbobu
     explore: amt
     type: table
     fields: [amt.product_group, amt.sales_document_doc_number, amt.sd_document_currency_doc_currcy,
       amt.billing_document_bill_num, amt.billing_item_bill_item, amt.TypeBudgetForecastTarget_ZTYPE,
       amt.zcurrdate_date, amt.net_invoiced_sales_cash_discount_zs_nisdis, amt.net_sales_zs_netsal,
       amt.delivery_customer_freight_zydcf, amt.net_revenue_zs_netrev, conv.tcurr]
+    filters:
+      conv.tcurr: EUR
+      conv.conversion_date_time_date: 2024/08/01 to 2025/04/02
     sorts: [amt.sales_document_doc_number desc]
     limit: 500
     column_limit: 50
@@ -30,13 +34,11 @@
     defaults_version: 1
     hidden_pivots: {}
     listen:
-      Currency: conv.tcurr
       TypeBudgetForecastTarget ZTYPE: amt.TypeBudgetForecastTarget_ZTYPE
-      Conversion Date Time Date: conv.conversion_date_time_date
     row: 0
     col: 0
     width: 24
-    height: 11
+    height: 10
   filters:
   - name: Currency
     title: Currency
@@ -47,9 +49,7 @@
     ui_config:
       type: checkboxes
       display: popover
-      options:
-      - EUR
-    model: curr_conv
+    model: zinbobu
     explore: amt
     listens_to_filters: []
     field: conv.tcurr
@@ -62,7 +62,7 @@
     ui_config:
       type: button_group
       display: popover
-    model: curr_conv
+    model: zinbobu
     explore: amt
     listens_to_filters: []
     field: amt.TypeBudgetForecastTarget_ZTYPE
@@ -76,7 +76,7 @@
       type: day_range_picker
       display: inline
       options: []
-    model: curr_conv
+    model: zinbobu
     explore: amt
     listens_to_filters: []
     field: conv.conversion_date_time_date

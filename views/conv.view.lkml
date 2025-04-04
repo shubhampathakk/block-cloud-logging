@@ -12,7 +12,7 @@ view: conv {
                     CAST(SUBSTR(CAST((99999999 - CAST(gdatu AS NUMERIC)) AS STRING), 5, 2) AS INT64),
                     CAST(SUBSTR(CAST((99999999 - CAST(gdatu AS NUMERIC)) AS STRING), 7, 2) AS INT64)
                   ) AS conversion_date,
-                if(ukurs  >= 0, ukurs, -1 * 1 / ukurs) as ukurs --conversion rate
+                if(ukurs  >= 0, ukurs, -1 / ukurs) as ukurs --conversion rate
               FROM
                 `pso-gdc-japac-wedevelop-df.sappi_bq.tcurr`
                )
